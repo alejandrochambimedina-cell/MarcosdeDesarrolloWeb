@@ -1,0 +1,108 @@
+:root {
+    --bg-dark: #0b1d3a;
+    --gold: #e6a100;
+    --gold-hover: #c78b00;
+    --bg-light: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-dark: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo-img {
+    height: 40px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: var(--gold);
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(rgba(11, 29, 58, 0.8), rgba(11, 29, 58, 0.8)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1200') center/cover;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.hero-content h1 span {
+    color: var(--gold);
+}
+
+.hero-content p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-top: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-dark);
+    color: white;
+    margin-top: 4rem;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-col { flex: 1; }
+.footer-col h4 { color: var(--gold); margin-bottom: 0.8rem; }
+.footer-col p { font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; }
+
+.footer-bottom {
+    background-color: #050e1d;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}

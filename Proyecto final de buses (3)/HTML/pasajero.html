@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asientos y Equipaje - RutaPerú</title>
+    <link rel="stylesheet" href="../css/estilo_global.css">
+    <link rel="stylesheet" href="../css/pasajero.css">
+</head>
+<body>
+
+    <!-- Encabezado y Navegación -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="../imagenes/ruta-logo.png.png" alt="RutaPerú Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">INICIO</a></li>
+                <li><a href="#">BUSES</a></li>
+                <li><a href="#">RESERVA</a></li>
+                <li><a href="servicios.html">SERVICIOS</a></li>
+                <li><a href="pasajero.html" class="active">PASAJERO</a></li>
+                <li><a href="#">BOLETO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>SELECCIÓN DE <span>ASIENTOS Y EQUIPAJE</span></h1>
+            <p>Personaliza tu viaje eligiendo tu lugar y registrando tus maletas con seguridad</p>
+        </div>
+    </section>
+
+    <!-- Sección Principal -->
+    <main class="main-container">
+        
+        <div class="grid-layout">
+            <!-- Formulario del Pasajero -->
+            <section class="card-box">
+                <div class="card-header">
+                    <h3>1. Registro de Pasajero y Equipaje</h3>
+                </div>
+                <form id="form-asientos">
+                    <div class="form-group">
+                        <label for="dni">DNI / Documento:</label>
+                        <input type="text" id="dni" placeholder="Ej. 74839201" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asiento-num">Asiento Seleccionado:</label>
+                        <input type="text" id="asiento-num" placeholder="Selecciona un asiento del mapa" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-equipaje">Tipo de Equipaje:</label>
+                        <select id="tipo-equipaje" required>
+                            <option value="Equipaje de mano (Gratis)">Equipaje de mano (Gratis)</option>
+                            <option value="Bodega Estándar (hasta 20kg)">Bodega Estándar (hasta 20kg)</option>
+                            <option value="Equipaje Extra (Adicional S/. 25)">Equipaje Extra (Adicional S/. 25)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="maletas">Cantidad de Maletas:</label>
+                        <input type="number" id="maletas" min="1" max="4" value="1" required>
+                    </div>
+                    <button type="submit" class="btn-gold">Confirmar Selección</button>
+                </form>
+            </section>
+
+            <!-- Mapa del Bus -->
+            <section class="card-box">
+                <div class="card-header">
+                    <h3>2. Mapa de Asientos</h3>
+                </div>
+                <div class="bus-container">
+                    <div class="bus-driver">🚍 Frente / Cabina del Conductor</div>
+                    <div class="bus-grid" id="mapa-asientos">
+                        <!-- Asientos dinámicos generados por JS -->
+                    </div>
+                    <div class="leyenda">
+                        <span><i class="seat-sample disponible"></i> Disponible</span>
+                        <span><i class="seat-sample ocupado"></i> Ocupado</span>
+                        <span><i class="seat-sample seleccionado"></i> Tu Selección</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tabla de Reservas -->
+        <section class="card-box table-section">
+            <div class="card-header">
+                <h3>3. Pasajeros Confirmados</h3>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DNI</th>
+                            <th>Pasajero</th>
+                            <th>Nº Asiento</th>
+                            <th>Tipo Equipaje</th>
+                            <th>Maletas</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-asientos">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Viajes del Norte</h4>
+                <p>Ofrecemos diferentes servicios de transporte para que puedas viajar con comodidad, seguridad y confianza.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Información</h4>
+                <p>Conoce nuestras opciones de servicio y elige la alternativa que mejor se adapte a tu viaje.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p>📞 +51 987 654 321</p>
+                <p>✉️ contacto@RutaPerú.com</p>
+                <p>📍 Lima, Perú</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RutaPerú - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="../js/pasajero.js"></script>
+</body>
+</html>
