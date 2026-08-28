@@ -1,0 +1,104 @@
+/* ===== DATOS DEL PASAJERO ===== */
+
+.pasajero-main {
+    min-height: calc(100vh - 85px);
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+}
+
+.pasajero-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(6, 26, 53, 0.10);
+}
+
+.pasajero-titulo {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.5rem;
+}
+
+.pasajero-titulo span {
+    color: #d9a520;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.pasajero-titulo h1 {
+    margin: .35rem 0 .5rem;
+    color: #061a35;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.pasajero-titulo p {
+    margin: 0;
+    color: #596579;
+}
+
+.form-label {
+    color: #172a46;
+    font-weight: 700;
+    margin-bottom: .45rem;
+}
+
+.form-control,
+.form-select {
+    min-height: 48px;
+    border: 1px solid #d8dde5;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #1d5794;
+    box-shadow: 0 0 0 .2rem rgba(29, 87, 148, .12);
+}
+
+.form-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: .8rem;
+    margin-top: 2rem;
+}
+
+.btn-pasajero {
+    background: #1d5794;
+    border-color: #1d5794;
+    color: #ffffff;
+    font-weight: 700;
+    padding: .7rem 1.2rem;
+}
+
+.btn-pasajero:hover {
+    background: #164675;
+    border-color: #164675;
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .pasajero-main {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .pasajero-card {
+        padding: 1.4rem;
+    }
+
+    .pasajero-titulo h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-acciones {
+        flex-direction: column;
+    }
+
+    .form-acciones .btn {
+        width: 100%;
+    }
+}
