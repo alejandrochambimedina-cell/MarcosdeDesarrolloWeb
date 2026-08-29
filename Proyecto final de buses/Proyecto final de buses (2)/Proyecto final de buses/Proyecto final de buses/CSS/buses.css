@@ -1,0 +1,267 @@
+/* =====================================
+   PÁGINA DE BUSES
+===================================== */
+
+.buses-container {
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+
+
+/* =====================================
+   TÍTULO
+===================================== */
+
+.titulo-buses {
+    background-color: white;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+.titulo-buses h1 {
+    color: #0d6efd;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+
+.titulo-buses p {
+    font-size: 17px;
+
+    margin-bottom: 0;
+}
+
+
+
+/* =====================================
+   CONTENEDOR DE LA TABLA
+===================================== */
+
+.buses-section {
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+.buses-section h2 {
+    margin-bottom: 25px;
+
+    color: #333;
+
+    font-size: 24px;
+}
+
+
+
+/* =====================================
+   TABLA
+===================================== */
+
+.buses-table {
+    margin-bottom: 0;
+}
+
+
+/* Encabezado */
+
+.buses-table thead th {
+    background-color: #0d6efd;
+
+    color: white;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    padding: 15px;
+}
+
+
+/* Celdas */
+
+.buses-table tbody td {
+    text-align: center;
+
+    vertical-align: middle;
+
+    padding: 15px;
+}
+
+
+/* Filas */
+
+.buses-table tbody tr {
+    transition: 0.2s;
+}
+
+
+.buses-table tbody tr:hover {
+    background-color: #f0f6ff;
+}
+
+
+
+/* =====================================
+   INFORMACIÓN DEL BUS
+===================================== */
+
+.bus-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    text-align: left;
+}
+
+
+.bus-info span {
+    font-weight: bold;
+
+    color: #333;
+}
+
+
+
+/* =====================================
+   IMÁGENES DE LOS BUSES
+===================================== */
+
+.imagen-bus {
+    width: 90px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+    border-radius: 6px;
+}
+
+
+
+/* =====================================
+   PRECIO
+===================================== */
+
+.precio {
+    font-weight: bold;
+
+    color: #198754;
+}
+
+
+
+/* =====================================
+   BOTÓN
+===================================== */
+
+.buses-table .btn {
+    min-width: 110px;
+}
+
+
+
+/* =====================================
+   RESULTADO DEL BUS SELECCIONADO
+===================================== */
+
+.resultado-bus {
+    display: none;
+
+    background-color: #d1e7dd;
+
+    border: 1px solid #a3cfbb;
+
+    padding: 30px;
+
+    margin-top: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.resultado-bus h2 {
+    color: #0f5132;
+
+    margin-bottom: 20px;
+}
+
+
+.resultado-bus p {
+    margin-bottom: 8px;
+
+    font-size: 17px;
+}
+
+
+.resultado-bus .btn {
+    margin-top: 15px;
+}
+
+
+
+/* =====================================
+   CELULARES
+===================================== */
+
+@media (max-width: 768px) {
+
+    .buses-container {
+        padding-top: 25px;
+    }
+
+
+    .titulo-buses {
+        padding: 20px;
+    }
+
+
+    .titulo-buses h1 {
+        font-size: 25px;
+    }
+
+
+    .buses-section {
+        padding: 15px;
+    }
+
+
+    .bus-info {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .imagen-bus {
+        width: 75px;
+
+        height: 50px;
+    }
+
+
+    .buses-table tbody td {
+        padding: 10px;
+    }
+
+}
