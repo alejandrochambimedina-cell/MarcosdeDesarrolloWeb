@@ -1,0 +1,477 @@
+/* =====================================
+   RESERVA DE ASIENTO Y EQUIPAJE
+===================================== */
+
+.reserva-main {
+    min-height: calc(100vh - 85px);
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+}
+
+.reserva-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(6, 26, 53, 0.10);
+}
+
+.reserva-titulo {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.5rem;
+}
+
+.reserva-titulo span {
+    color: #d9a520;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.reserva-titulo h1 {
+    margin: .35rem 0 .5rem;
+    color: #061a35;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.reserva-titulo p {
+    margin: 0;
+    color: #596579;
+    max-width: 620px;
+}
+
+
+/* =====================================
+   RESUMEN DEL VIAJE (RUTA / BUS / SERVICIO)
+===================================== */
+
+.viaje-resumen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    background-color: #f1f3f5;
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.viaje-resumen > div {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+
+.viaje-resumen i {
+    color: #d9a520;
+    font-size: 1.1rem;
+    width: 22px;
+    text-align: center;
+}
+
+.viaje-resumen span {
+    display: block;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #8b95a5;
+}
+
+.viaje-resumen strong {
+    display: block;
+    color: #172a46;
+    font-size: .95rem;
+}
+
+
+/* =====================================
+   BLOQUES (ASIENTOS / EQUIPAJE)
+===================================== */
+
+.bloque-reserva {
+    background-color: #f8f9fb;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.bloque-reserva h2 {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    color: #172a46;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.bloque-reserva h2 i {
+    color: #1d5794;
+}
+
+.bloque-descripcion {
+    color: #596579;
+    font-size: .92rem;
+    margin-bottom: 1.3rem;
+}
+
+
+/* =====================================
+   MAPA DEL BUS
+===================================== */
+
+.bus-mapa {
+    max-width: 320px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #dde2e8;
+    border-radius: 18px;
+    padding: 1.4rem 1rem 1.6rem;
+}
+
+.bus-conductor,
+.bus-puerta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    color: #8b95a5;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bus-conductor {
+    margin-bottom: 1.1rem;
+}
+
+.bus-puerta {
+    margin-top: 1.1rem;
+}
+
+.mapa-asientos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 46px 46px 26px 46px 46px;
+    justify-content: center;
+    row-gap: .7rem;
+}
+
+.mapa-asientos .aisle {
+    pointer-events: none;
+}
+
+.asiento {
+    width: 46px;
+    height: 40px;
+    border-radius: 8px 8px 4px 4px;
+    border: 2px solid #2e7d32;
+    background-color: #eaf6ec;
+    color: #2e7d32;
+    font-size: .78rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform .15s ease, background-color .2s ease, color .2s ease;
+}
+
+/* Estado por defecto: "disponible" (verde), definido arriba.
+   Se levanta un poco al pasar el mouse, para dar feedback visual
+   de que es clickeable. */
+
+.asiento:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(6, 26, 53, 0.12);
+}
+
+/* Borde visible al navegar con el teclado (accesibilidad). */
+
+.asiento:focus-visible {
+    outline: 2px solid #1d5794;
+    outline-offset: 2px;
+}
+
+/* Estado "ocupado": lo controla reserva.js poniendo
+   data-estado="ocupado" y el atributo disabled en el botón. */
+
+.asiento[data-estado="ocupado"] {
+    border-color: #c62828;
+    background-color: #fbe9e7;
+    color: #c62828;
+    cursor: not-allowed;
+    opacity: .85;
+}
+
+/* Estado "seleccionado": se activa/desactiva al hacer clic
+   en un asiento disponible (ver reserva.js). */
+
+.asiento[data-estado="seleccionado"] {
+    border-color: #1d5794;
+    background-color: #1d5794;
+    color: #ffffff;
+}
+
+
+/* =====================================
+   LEYENDA DE ESTADOS
+===================================== */
+
+.leyenda-asientos {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    margin: 1.4rem 0 0;
+    padding: 0;
+    font-size: .85rem;
+    color: #596579;
+}
+
+.leyenda-asientos li {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.punto {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.punto-disponible {
+    background-color: #2e7d32;
+}
+
+.punto-ocupado {
+    background-color: #c62828;
+}
+
+.punto-seleccionado {
+    background-color: #1d5794;
+}
+
+
+/* =====================================
+   EQUIPAJE
+===================================== */
+
+.equipaje-opcion.equipaje-incluido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: .8rem 1rem;
+    margin-bottom: 1.1rem;
+}
+
+.badge-incluido {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: .3rem .6rem;
+    border-radius: 20px;
+}
+
+.equipaje-adicional {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    background-color: #ffffff;
+}
+
+.equipaje-adicional legend {
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #8b95a5;
+    padding: 0 .3rem;
+    width: auto;
+    float: none;
+}
+
+.equipaje-adicional .form-check {
+    margin-bottom: .5rem;
+}
+
+.equipaje-adicional .form-check:last-child {
+    margin-bottom: 0;
+}
+
+.equipaje-adicional .form-check-label span {
+    color: #596579;
+}
+
+
+/* =====================================
+   RESUMEN LATERAL (ASIDE)
+===================================== */
+
+.resumen-aside {
+    position: sticky;
+    top: 105px;
+}
+
+.resumen-card {
+    background-color: #061a35;
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 1.6rem;
+}
+
+.resumen-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+}
+
+.resumen-card .alert {
+    font-size: .85rem;
+    padding: .7rem .9rem;
+}
+
+.asientos-elegidos {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: 0 0 1.2rem;
+    padding: 0;
+}
+
+.asientos-elegidos:empty {
+    display: none;
+}
+
+.asientos-elegidos li {
+    background-color: #d9a520;
+    color: #061a35;
+    font-weight: 700;
+    font-size: .8rem;
+    padding: .3rem .65rem;
+    border-radius: 20px;
+}
+
+.resumen-precios {
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, .15);
+}
+
+.resumen-precios > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .6rem;
+}
+
+.resumen-precios dt {
+    font-weight: 400;
+    color: #c9ced6;
+    font-size: .9rem;
+}
+
+.resumen-precios dd {
+    margin: 0;
+    font-weight: 700;
+}
+
+.resumen-total {
+    padding-top: .8rem;
+    margin-top: .4rem;
+    border-top: 1px dashed rgba(255, 255, 255, .25);
+}
+
+.resumen-total dt {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.resumen-total dd {
+    color: #d9a520;
+    font-size: 1.35rem;
+}
+
+.resumen-acciones {
+    display: flex;
+    justify-content: space-between;
+    gap: .7rem;
+    margin-top: 1.4rem;
+}
+
+.resumen-acciones .btn {
+    flex: 1;
+    font-weight: 700;
+}
+
+.resumen-card #mensajeGuardado {
+    margin-top: 1rem;
+    font-size: .85rem;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 992px) {
+
+    .resumen-aside {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .reserva-main {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .reserva-card {
+        padding: 1.4rem;
+    }
+
+    .reserva-titulo h1 {
+        font-size: 1.6rem;
+    }
+
+    .viaje-resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mapa-asientos {
+        grid-template-columns: 42px 42px 22px 42px 42px;
+    }
+
+    .asiento {
+        width: 42px;
+        height: 38px;
+        font-size: .72rem;
+    }
+
+    .resumen-acciones {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .viaje-resumen {
+        grid-template-columns: 1fr;
+    }
+}

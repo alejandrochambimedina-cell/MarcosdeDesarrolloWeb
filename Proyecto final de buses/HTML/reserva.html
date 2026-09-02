@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reserva de asiento | RutaPerú</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- CSS de tu proyecto -->
+    <link rel="stylesheet" href="../CSS/estilo_global.css">
+    <link rel="stylesheet" href="../CSS/reserva.css">
+</head>
+
+<body>
+
+    <!-- MENÚ -->
+    <header class="header">
+
+        <div class="navbar container">
+
+            <div class="logo">
+                <img src="../imagenes/ruta-logo.png"
+                     alt="Logo RutaPerú">
+            </div>
+
+            <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">
+                &#9776;
+            </button>
+
+            <nav class="menu" id="menu-principal">
+
+                <ul>
+                    <li>
+                        <a href="inicio.html">Inicio</a>
+                    </li>
+
+                    <li>
+                        <a href="buses.html">Buses</a>
+                    </li>
+
+                    <li>
+                        <a href="reserva.html" class="activo">Reserva</a>
+                    </li>
+
+                    <li>
+                        <a href="servicios.html">Servicios</a>
+                    </li>
+
+                    <li>
+                        <a href="pasajero.html">Pasajero</a>
+                    </li>
+
+                    <li>
+                        <a href="boleto.html">Boleto</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+    <main class="container reserva-main">
+
+        <section class="reserva-card">
+
+            <div class="reserva-titulo">
+
+                <span>RESERVA DE VIAJE</span>
+
+                <h1>Elige tu asiento y equipaje</h1>
+
+                <p>
+                    Aquí comienza realmente tu reserva: selecciona uno o varios
+                    asientos disponibles y define el equipaje que llevarás contigo.
+                </p>
+
+            </div>
+
+
+            <!-- RESUMEN DEL VIAJE SELECCIONADO -->
+            <div class="viaje-resumen" id="viajeResumen">
+
+                <div>
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <span>Ruta</span>
+                        <strong id="resumenRuta">-</strong>
+                    </div>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-bus"></i>
+                    <div>
+                        <span>Bus</span>
+                        <strong id="resumenBus">-</strong>
+                    </div>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <span>Horario</span>
+                        <strong id="resumenHorario">-</strong>
+                    </div>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-star"></i>
+                    <div>
+                        <span>Servicio</span>
+                        <strong id="resumenServicio">-</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <form id="formReserva" novalidate>
+
+                <div class="row g-4">
+
+                    <!-- =================================
+                         SELECCIÓN DE ASIENTO
+                    ================================== -->
+
+                    <div class="col-lg-7">
+
+                        <section class="bloque-reserva" aria-labelledby="tituloAsientos">
+
+                            <h2 id="tituloAsientos">
+                                <i class="fa-solid fa-chair"></i>
+                                Selección de asiento
+                            </h2>
+
+                            <p class="bloque-descripcion">
+                                El usuario selecciona uno o varios asientos.
+                                Toca un asiento disponible para elegirlo o
+                                quitarlo de tu reserva.
+                            </p>
+
+
+                            <div class="bus-mapa">
+
+                                <div class="bus-conductor">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                    Conductor
+                                </div>
+
+                                <ul class="mapa-asientos" id="mapaAsientos">
+                                    <!-- Los asientos se generan con JavaScript -->
+                                </ul>
+
+                                <div class="bus-puerta">
+                                    <i class="fa-solid fa-door-open"></i>
+                                    Puerta
+                                </div>
+
+                            </div>
+
+
+                            <ul class="leyenda-asientos">
+
+                                <li>
+                                    <span class="punto punto-disponible"></span>
+                                    Disponible
+                                </li>
+
+                                <li>
+                                    <span class="punto punto-ocupado"></span>
+                                    Ocupado
+                                </li>
+
+                                <li>
+                                    <span class="punto punto-seleccionado"></span>
+                                    Seleccionado
+                                </li>
+
+                            </ul>
+
+                        </section>
+
+
+                        <!-- =================================
+                             EQUIPAJE
+                        ================================== -->
+
+                        <section class="bloque-reserva" aria-labelledby="tituloEquipaje">
+
+                            <h2 id="tituloEquipaje">
+                                <i class="fa-solid fa-suitcase-rolling"></i>
+                                Equipaje
+                            </h2>
+
+                            <p class="bloque-descripcion">
+                                Cada pasaje incluye equipaje de mano. Si necesitas
+                                llevar maletas adicionales, agrégalas aquí.
+                            </p>
+
+
+                            <div class="equipaje-opcion equipaje-incluido">
+
+                                <div class="form-check">
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           id="equipajeMano"
+                                           checked
+                                           disabled>
+
+                                    <label class="form-check-label" for="equipajeMano">
+                                        Equipaje de mano
+                                    </label>
+                                </div>
+
+                                <span class="badge-incluido">Incluido</span>
+
+                            </div>
+
+
+                            <fieldset class="equipaje-adicional">
+
+                                <legend>Equipaje adicional</legend>
+
+                                <div class="form-check">
+                                    <input type="radio"
+                                           class="form-check-input"
+                                           name="equipajeAdicional"
+                                           id="equipaje0"
+                                           value="0"
+                                           checked>
+
+                                    <label class="form-check-label" for="equipaje0">
+                                        Ninguno
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input type="radio"
+                                           class="form-check-input"
+                                           name="equipajeAdicional"
+                                           id="equipaje1"
+                                           value="1">
+
+                                    <label class="form-check-label" for="equipaje1">
+                                        1 maleta <span>(+S/. 15)</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input type="radio"
+                                           class="form-check-input"
+                                           name="equipajeAdicional"
+                                           id="equipaje2"
+                                           value="2">
+
+                                    <label class="form-check-label" for="equipaje2">
+                                        2 maletas <span>(+S/. 30)</span>
+                                    </label>
+                                </div>
+
+                            </fieldset>
+
+                        </section>
+
+                    </div>
+
+
+                    <!-- =================================
+                         RESUMEN Y TOTAL
+                    ================================== -->
+
+                    <div class="col-lg-5">
+
+                        <aside class="resumen-aside" aria-labelledby="tituloResumen">
+
+                            <div class="resumen-card">
+
+                                <h2 id="tituloResumen">Resumen de tu reserva</h2>
+
+                                <div id="alertaSinAsientos" class="alert alert-warning">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Aún no has seleccionado ningún asiento.
+                                </div>
+
+                                <ul class="asientos-elegidos" id="listaAsientosElegidos">
+                                </ul>
+
+                                <dl class="resumen-precios">
+
+                                    <div>
+                                        <dt>Asientos</dt>
+                                        <dd id="resumenPrecioAsientos">S/. 0</dd>
+                                    </div>
+
+                                    <div>
+                                        <dt>Equipaje</dt>
+                                        <dd id="resumenPrecioEquipaje">S/. 0</dd>
+                                    </div>
+
+                                    <div class="resumen-total">
+                                        <dt>Total</dt>
+                                        <dd id="resumenPrecioTotal">S/. 0</dd>
+                                    </div>
+
+                                </dl>
+
+
+                                <div class="resumen-acciones">
+
+                                    <a href="servicios.html" class="btn btn-secondary">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                        Volver
+                                    </a>
+
+                                    <button type="submit"
+                                            class="btn btn-primary"
+                                            id="botonContinuar"
+                                            disabled>
+                                        Continuar
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                                <div id="mensajeGuardado" class="alert alert-success d-none">
+                                    Reserva guardada. Redirigiendo a tus datos de pasajero...
+                                </div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <h3>RutaPerú</h3>
+
+            <p>
+                Viaja con comodidad,
+                seguridad y confianza.
+            </p>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 RutaPerú - Todos los derechos reservados
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="../JS/Menu.js"></script>
+    <script src="../JS/reserva.js"></script>
+
+</body>
+
+</html>
