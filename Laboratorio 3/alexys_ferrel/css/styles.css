@@ -1,28 +1,29 @@
 :root {
-  --techlab-primary: #5b2aa8;
+  --campus-primary: #0d6efd;
 }
 
-html { 
-  scroll-behavior: smooth; 
+html {
+  scroll-behavior: smooth;
 }
 
-body { 
-  min-width: 320px; 
+body {
+  min-width: 320px;
 }
 
-.hero { 
-  min-height: 30rem; 
-  display: flex; 
-  align-items: center; 
+.hero {
+  min-height: 25rem;
+  display: flex;
+  align-items: center;
 }
 
-.card { 
-  border: 0; 
-  transition: transform 180ms ease, box-shadow 180ms ease; 
+.card {
+  border: 0;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.card:hover { 
-  transform: translateY(-0.25rem); 
+.card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .card:focus-within {
@@ -32,18 +33,18 @@ body {
 
 .form-control:focus,
 .form-select:focus,
-.form-check-input:focus { 
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); 
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { 
-    scroll-behavior: auto; 
+  html {
+    scroll-behavior: auto;
   }
-  .card { 
-    transition: none; 
+  .card {
+    transition: none;
   }
-  .card:hover { 
-    transform: none; 
+  .card:hover {
+    transform: none;
   }
 }

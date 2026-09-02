@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Catálogo de rutas formativas de TechLab.">
-  <title>TechLab - Rutas formativas</title>
-
-  <!-- CDN Bootstrap CSS & Icons (Versión estable 5.3.3) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <meta name="description" content="Portal de actividades universitarias CampusVirtual.">
+  <title>CampusVirtual | Actividades Universitarias</title>
   
-  <!-- CSS Propio -->
-  <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="visually-hidden-focusable" href="#contenido-principal">
@@ -22,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" aria-label="Navegación principal">
       <div class="container">
         <a class="navbar-brand fw-semibold" href="#inicio">
-          <i class="bi bi-code-square me-2" aria-hidden="true"></i>TechLab
+          <i class="bi bi-calendar-event me-2" aria-hidden="true"></i>CampusVirtual
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Mostrar u ocultar navegación">
           <span class="navbar-toggler-icon"></span>
@@ -30,7 +27,7 @@
         <div class="collapse navbar-collapse" id="menuPrincipal">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#inicio">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#actividades">Actividades</a></li>
             <li class="nav-item"><a class="nav-link" href="#metodologia">Metodología</a></li>
             <li class="nav-item"><a class="nav-link" href="#preguntas">Preguntas</a></li>
           </ul>
@@ -45,26 +42,25 @@
       <div class="container py-lg-4">
         <div class="row align-items-center g-4">
           <div class="col-12 col-lg-7">
-            <span class="badge text-bg-primary mb-3">Nuevas vacantes</span>
-            <h1 class="display-4 fw-bold">Aprende desarrollo web con proyectos reales</h1>
+            <span class="badge text-bg-primary mb-3">Convocatoria 2026-I</span>
+            <h1 class="display-4 fw-bold">Inscríbete en las actividades universitarias</h1>
             <p class="lead text-body-secondary">
-              Elige una ruta, revisa la metodología y registra tu interés.
+              Desarrolla tus habilidades blandas, participa en deportes y forma parte de nuestros clubes estudiantiles.
             </p>
-            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-curso="Orientación general">
+            <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-actividad="Orientación General">
               Solicitar orientación
             </button>
           </div>
           <div class="col-12 col-lg-5">
             <blockquote class="blockquote border-start border-primary border-4 ps-4 mb-0">
-              <p>La mejor interfaz es comprensible, adaptable y verificable.</p>
-              <footer class="blockquote-footer mb-0">Principio de trabajo TechLab</footer>
+              <p>"La formación integral conecta el conocimiento académico con la experiencia comunitaria."</p>
+              <footer class="blockquote-footer mb-0">Vicerrectorado Académico</footer>
             </blockquote>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Feedback Global -->
     <div class="container mt-4">
       <div class="alert alert-info d-flex align-items-start" role="alert">
         <i class="bi bi-info-circle-fill me-2" aria-hidden="true"></i>
@@ -73,167 +69,194 @@
       <div id="estadoGlobal" class="alert alert-success d-none" role="status" aria-live="polite"></div>
     </div>
 
-    <!-- Sección Cursos -->
-    <section id="cursos" class="py-5">
+    <section id="actividades" class="py-5">
       <div class="container">
         <div class="mb-4">
           <p class="text-primary fw-semibold text-uppercase mb-1">Catálogo</p>
-          <h2 class="fw-bold">Rutas disponibles</h2>
-          <p class="text-body-secondary">Tarjetas consistentes con acciones claras y contenido comparable.</p>
+          <h2 class="fw-bold">Actividades Disponibles</h2>
+          <p class="text-body-secondary">Participa en las iniciativas complementarias programadas para este semestre.</p>
         </div>
+        
         <div class="row g-4">
-          <!-- Card 1 -->
-          <article class="col-12 col-md-6 col-xl-4">
+
+          <article class="col-12 col-md-6 col-xl-3">
             <div class="card h-100 shadow-sm">
               <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-start gap-2">
-                  <h3 class="card-title h5">Frontend con Bootstrap</h3>
-                  <span class="badge text-bg-success">Inicial</span>
+                  <h3 class="card-title h5">Club de Robótica</h3>
+                  <span class="badge text-bg-success">Técnico</span>
                 </div>
-                <p class="card-text text-body-secondary">Interfaces semánticas, responsivas y accesibles.</p>
+                <p class="card-text text-body-secondary">Diseño y programación de prototipos de automatización.</p>
                 <ul class="list-group list-group-flush mb-3">
-                  <li class="list-group-item px-0">4 semanas</li>
-                  <li class="list-group-item px-0">Modalidad híbrida</li>
+                  <li class="list-group-item px-0">Viernes 15:00 hrs</li>
+                  <li class="list-group-item px-0">Modalidad Presencial</li>
                 </ul>
-                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-curso="Frontend con Bootstrap">Inscribirme</button>
+                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-actividad="Club de Robótica">Inscribirme</button>
               </div>
             </div>
           </article>
-          <!-- Card 2 -->
-          <article class="col-12 col-md-6 col-xl-4">
+
+          <article class="col-12 col-md-6 col-xl-3">
             <div class="card h-100 shadow-sm">
               <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-start gap-2">
-                  <h3 class="card-title h5">JavaScript aplicado</h3>
-                  <span class="badge text-bg-warning">Intermedio</span>
+                  <h3 class="card-title h5">Taller de Liderazgo</h3>
+                  <span class="badge text-bg-warning text-dark">Habilidades</span>
                 </div>
-                <p class="card-text text-body-secondary">Eventos, módulos y consumo responsable de APIs.</p>
+                <p class="card-text text-body-secondary">Desarrollo de competencias de comunicación y trabajo en equipo.</p>
                 <ul class="list-group list-group-flush mb-3">
-                  <li class="list-group-item px-0">6 semanas</li>
-                  <li class="list-group-item px-0">Modalidad virtual</li>
+                  <li class="list-group-item px-0">Sábados 09:00 hrs</li>
+                  <li class="list-group-item px-0">Modalidad Híbrida</li>
                 </ul>
-                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-curso="JavaScript aplicado">Inscribirme</button>
+                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-actividad="Taller de Liderazgo">Inscribirme</button>
               </div>
             </div>
           </article>
-          <!-- Card 3 -->
-          <article class="col-12 col-md-6 col-xl-4">
+
+          <article class="col-12 col-md-6 col-xl-3">
             <div class="card h-100 shadow-sm">
               <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-start gap-2">
-                  <h3 class="card-title h5">Backend con Spring</h3>
-                  <span class="badge text-bg-danger">Avanzado</span>
+                  <h3 class="card-title h5">Selección de Ajedrez</h3>
+                  <span class="badge text-bg-danger">Deportes</span>
                 </div>
-                <p class="card-text text-body-secondary">Aplicaciones MVC, persistencia y seguridad.</p>
+                <p class="card-text text-body-secondary">Entrenamiento táctico y competencia en torneos interuniversitarios.</p>
                 <ul class="list-group list-group-flush mb-3">
-                  <li class="list-group-item px-0">8 semanas</li>
-                  <li class="list-group-item px-0">Modalidad presencial</li>
+                  <li class="list-group-item px-0">Miércoles 17:00 hrs</li>
+                  <li class="list-group-item px-0">Modalidad Presencial</li>
                 </ul>
-                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-curso="Backend con Spring">Inscribirme</button>
+                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-actividad="Selección de Ajedrez">Inscribirme</button>
+              </div>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 col-xl-3">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start gap-2">
+                  <h3 class="card-title h5">Voluntariado Social</h3>
+                  <span class="badge text-bg-info text-dark">Comunidad</span>
+                </div>
+                <p class="card-text text-body-secondary">Proyectos de apoyo y vinculación con la comunidad local.</p>
+                <ul class="list-group list-group-flush mb-3">
+                  <li class="list-group-item px-0">Domingos 10:00 hrs</li>
+                  <li class="list-group-item px-0">Modalidad Campo</li>
+                </ul>
+                <button class="btn btn-outline-primary mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#modalRegistro" data-actividad="Voluntariado Social">Inscribirme</button>
               </div>
             </div>
           </article>
         </div>
       </div>
     </section>
-
-    <!-- Sección Metodología (Tabs) -->
     <section id="metodologia" class="py-5 bg-body-tertiary">
       <div class="container">
-        <h2 class="fw-bold mb-4">Metodología de aprendizaje</h2>
+        <h2 class="fw-bold mb-4">Metodología de Participación</h2>
         <ul class="nav nav-tabs" id="tabsMetodologia" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="practica-tab" data-bs-toggle="tab" data-bs-target="#practica-panel" type="button" role="tab" aria-controls="practica-panel" aria-selected="true">Práctica</button>
+            <button class="nav-link active" id="practica-tab" data-bs-toggle="tab" data-bs-target="#practica-panel" type="button" role="tab" aria-controls="practica-panel" aria-selected="true">Convocatoria</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="proyecto-tab" data-bs-toggle="tab" data-bs-target="#proyecto-panel" type="button" role="tab" aria-controls="proyecto-panel" aria-selected="false">Proyecto</button>
+            <button class="nav-link" id="proyecto-tab" data-bs-toggle="tab" data-bs-target="#proyecto-panel" type="button" role="tab" aria-controls="proyecto-panel" aria-selected="false">Evaluación</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="feedback-tab" data-bs-toggle="tab" data-bs-target="#feedback-panel" type="button" role="tab" aria-controls="feedback-panel" aria-selected="false">Retroalimentación</button>
+            <button class="nav-link" id="feedback-tab" data-bs-toggle="tab" data-bs-target="#feedback-panel" type="button" role="tab" aria-controls="feedback-panel" aria-selected="false">Certificación</button>
           </li>
         </ul>
         <div class="tab-content border border-top-0 rounded-bottom p-4 bg-body" id="contenidoMetodologia">
           <div class="tab-pane fade show active" id="practica-panel" role="tabpanel" aria-labelledby="practica-tab" tabindex="0">
-            <h3 class="h5">Aprendizaje guiado</h3>
-            <p class="mb-0">Cada concepto se demuestra y se comprueba antes del reto.</p>
+            <h3 class="h5">Inscripción libre y gratuita</h3>
+            <p class="mb-0">Todos los estudiantes regulares pueden postular a máximo dos actividades por ciclo.</p>
           </div>
           <div class="tab-pane fade" id="proyecto-panel" role="tabpanel" aria-labelledby="proyecto-tab" tabindex="0">
-            <h3 class="h5">Producto acumulativo</h3>
-            <p class="mb-0">La solución evoluciona durante el curso.</p>
+            <h3 class="h5">Control de asistencia</h3>
+            <p class="mb-0">Se requiere un mínimo del 80% de asistencia para mantener la condición de participante activo.</p>
           </div>
           <div class="tab-pane fade" id="feedback-panel" role="tabpanel" aria-labelledby="feedback-tab" tabindex="0">
-            <h3 class="h5">Mejora basada en evidencias</h3>
-            <p class="mb-0">Las pruebas orientan cada corrección.</p>
+            <h3 class="h5">Créditos extracurriculares</h3>
+            <p class="mb-0">Al completar la actividad se otorgan certificados válidos para créditos de libre configuración.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Sección Preguntas (Accordion) -->
     <section id="preguntas" class="py-5">
       <div class="container">
-        <h2 class="fw-bold mb-4">Preguntas frecuentes</h2>
+        <h2 class="fw-bold mb-4">Preguntas Frecuentes</h2>
         <div class="accordion" id="acordeonPreguntas">
           <div class="accordion-item">
             <h3 class="accordion-header">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#respuestaUno" aria-expanded="true" aria-controls="respuestaUno">
-                ¿Necesito experiencia previa?
+                ¿Puedo inscribirme en más de un club a la vez?
               </button>
             </h3>
             <div id="respuestaUno" class="accordion-collapse collapse show" data-bs-parent="#acordeonPreguntas">
-              <div class="accordion-body">Solo necesitas fundamentos de HTML, CSS y JavaScript.</div>
+              <div class="accordion-body">Sí, se permite la inscripción en un máximo de 2 actividades simultáneas por ciclo.</div>
             </div>
           </div>
           <div class="accordion-item">
             <h3 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#respuestaDos" aria-expanded="false" aria-controls="respuestaDos">
-                ¿La validación del formulario guarda datos?
+                ¿Las actividades entregan créditos universitarios?
               </button>
             </h3>
             <div id="respuestaDos" class="accordion-collapse collapse" data-bs-parent="#acordeonPreguntas">
-              <div class="accordion-body">No. Esta versión solo demuestra validación del lado del cliente.</div>
+              <div class="accordion-body">Sí, la culminación satisfactoria otorga 1 crédito extracurricular acumulable.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#respuestaTres" aria-expanded="false" aria-controls="respuestaTres">
+                ¿La validación del formulario envía mis datos?
+              </button>
+            </h3>
+            <div id="respuestaTres" class="accordion-collapse collapse" data-bs-parent="#acordeonPreguntas">
+              <div class="accordion-body">No. Esta versión es únicamente de demostración cliente en frontend.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="py-4 bg-dark text-white-50">
-    <div class="container"><small>&copy; <span id="anioActual"></span> TechLab</small></div>
+    <div class="container text-center text-md-start">
+      <small>© <span id="anioActual"></span> CampusVirtual. Todos los derechos reservados.</small>
+    </div>
   </footer>
 
-  <!-- Modal de Registro -->
+  <!-- Modal Reutilizable -->
   <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="tituloModalRegistro" aria-describedby="descripcionModalRegistro" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <div>
-            <h1 class="modal-title fs-5" id="tituloModalRegistro">Registro de interés</h1>
+            <h1 class="modal-title fs-5" id="tituloModalRegistro">Registro de Interés</h1>
             <p class="text-body-secondary small mb-0" id="descripcionModalRegistro">
-              Completa los campos obligatorios. No se enviarán datos reales.
+              Completa los datos solicitados. No se enviará información real a servidores.
             </p>
           </div>
           <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
+        
         <form id="formRegistro" novalidate>
           <div class="modal-body">
             <div class="row g-3">
               <div class="col-12">
-                <label class="form-label" for="curso">Curso seleccionado</label>
-                <input class="form-control" id="curso" name="curso" type="text" readonly>
+                <label class="form-label" for="actividad">Actividad seleccionada</label>
+                <input class="form-control" id="actividad" name="actividad" type="text" readonly>
               </div>
+
               <div class="col-12 col-md-6">
                 <label class="form-label" for="nombre">Nombre completo</label>
                 <input class="form-control" id="nombre" name="nombre" type="text" minlength="3" autocomplete="name" required aria-describedby="ayudaNombre">
-                <div class="form-text" id="ayudaNombre">Escribe al menos tres caracteres.</div>
+                <div class="form-text" id="ayudaNombre">Ingresa al menos 3 caracteres.</div>
                 <div class="invalid-feedback">Ingresa un nombre válido.</div>
               </div>
+
               <div class="col-12 col-md-6">
-                <label class="form-label" for="correo">Correo electrónico</label>
+                <label class="form-label" for="correo">Correo institucional</label>
                 <input class="form-control" id="correo" name="correo" type="email" autocomplete="email" required>
-                <div class="invalid-feedback">Ingresa un correo válido.</div>
+                <div class="invalid-feedback">Ingresa un correo institucional válido.</div>
               </div>
+
               <div class="col-12 col-md-6">
                 <label class="form-label" for="modalidad">Modalidad preferida</label>
                 <select class="form-select" id="modalidad" name="modalidad" required>
@@ -244,21 +267,25 @@
                 </select>
                 <div class="invalid-feedback">Selecciona una modalidad.</div>
               </div>
+
               <div class="col-12 col-md-6">
                 <label class="form-label" for="telefono">Teléfono <span class="text-body-secondary">(opcional)</span></label>
-                <input class="form-control" id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9+()\s-]{7,20}">
-                <div class="invalid-feedback">Usa entre 7 y 20 caracteres permitidos.</div>
+                <input class="form-control" id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9+()-]{7,20}">
+                <div class="invalid-feedback">Usa entre 7 y 20 caracteres válidos.</div>
               </div>
+
               <div class="col-12">
                 <div class="form-check">
                   <input class="form-check-input" id="acepta" name="acepta" type="checkbox" required>
-                  <label class="form-check-label" for="acepta">Acepto el uso demostrativo de estos datos.</label>
-                  <div class="invalid-feedback">Debes aceptar para continuar.</div>
+                  <label class="form-check-label" for="acepta">Acepto el uso demostrativo de mis datos.</label>
+                  <div class="invalid-feedback">Debes aceptar las condiciones para continuar.</div>
                 </div>
               </div>
             </div>
+
             <div id="estadoFormulario" class="alert alert-success mt-3 d-none" role="status" tabindex="-1"></div>
           </div>
+
           <div class="modal-footer">
             <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
             <button class="btn btn-primary" type="submit">Registrar interés</button>
@@ -267,10 +294,7 @@
       </div>
     </div>
   </div>
-
-  <!-- CDN Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- JS Propio -->
-  <script src="./js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
