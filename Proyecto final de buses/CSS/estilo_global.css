@@ -12,6 +12,7 @@ body {
     margin: 0;
     font-family: "Roboto", sans-serif;
     background-color: #f1f3f5;
+
     color: #172a46;
 }
 
@@ -50,6 +51,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 /* ========== LOGO ========== */
@@ -193,6 +195,38 @@ a {
 
     .menu {
         display: none;
+    }
+
+    /* ===== MENÚ MÓVIL ABIERTO ===== */
+    /* Se activa con JavaScript (menu.js) al pulsar el botón
+       de hamburguesa, agregando la clase "activo" a .menu. */
+
+    .menu.activo {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #061a35;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    }
+
+    .menu.activo ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 0;
+    }
+
+    .menu.activo li {
+        width: 100%;
+    }
+
+    .menu.activo a {
+        display: block;
+        padding: 0.9rem 1.5rem;
+        text-align: center;
+        border-top: 1px solid #17304f;
     }
 
     .footer-container {
