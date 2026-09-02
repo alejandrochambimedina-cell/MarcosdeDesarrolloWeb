@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Buses disponibles - RutaPerú</title>
+
+    <link
+        rel="stylesheet"
+        href="../CSS/buses.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         HEADER
+    ===================================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <img
+                src="../imagenes/ruta-logo.png"
+                alt="Logo RutaPerú"
+            >
+
+        </div>
+
+
+        <nav>
+
+            <a href="../index.html">
+                INICIO
+            </a>
+
+            <a
+                href="buses.html"
+                class="activo"
+            >
+                BUSES
+            </a>
+
+            <a href="reserva.html">
+                RESERVA
+            </a>
+
+            <a href="servicios.html">
+                SERVICIOS
+            </a>
+
+            <a href="pasajero.html">
+                PASAJERO
+            </a>
+
+            <a href="boleto.html">
+                BOLETO
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================
+         CONTENIDO PRINCIPAL
+    ===================================== -->
+
+    <main>
+
+
+        <!-- TÍTULO -->
+
+        <section class="titulo-buses">
+
+            <h1>
+                🚌 Buses disponibles
+            </h1>
+
+            <p>
+                Selecciona el bus que deseas utilizar
+                para tu viaje de
+                <strong>Lima → Cusco</strong>.
+            </p>
+
+        </section>
+
+
+
+        <!-- LISTA DE BUSES -->
+
+        <section class="contenedor-buses">
+
+
+            <h2>
+                Buses disponibles
+            </h2>
+
+
+            <!-- ENCABEZADO -->
+
+            <div class="tabla encabezado">
+
+                <div>
+                    Bus
+                </div>
+
+                <div>
+                    Salida
+                </div>
+
+                <div>
+                    Llegada
+                </div>
+
+                <div>
+                    Duración
+                </div>
+
+                <div>
+                    Precio
+                </div>
+
+                <div>
+                    Acción
+                </div>
+
+            </div>
+
+
+
+            <!-- BUS ANDINO -->
+
+            <div class="tabla bus">
+
+                <div class="informacion-bus">
+
+                    <img
+                        src="../imagenes/bus-andino.png"
+                        alt="Bus Andino"
+                    >
+
+                    <strong>
+                        Bus Andino
+                    </strong>
+
+                </div>
+
+
+                <div>
+                    20:00
+                </div>
+
+
+                <div>
+                    06:00
+                </div>
+
+
+                <div>
+                    10 h
+                </div>
+
+
+                <div>
+                    <strong>
+                        S/. 85
+                    </strong>
+                </div>
+
+
+                <div>
+
+                    <button
+                        onclick="
+                            seleccionarBus(
+                                'Bus Andino',
+                                '08:00',
+                                '18:00',
+                                '10 h',
+                                'S/. 85'
+                            )
+                        "
+                    >
+                        Seleccionar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PERÚ EXPRESS -->
+
+            <div class="tabla bus">
+
+                <div class="informacion-bus">
+
+                    <img
+                        src="../imagenes/peru-express.png"
+                        alt="Perú Express"
+                    >
+
+                    <strong>
+                        Perú Express
+                    </strong>
+
+                </div>
+
+
+                <div>
+                    14:00
+                </div>
+
+
+                <div>
+                    00:00
+                </div>
+
+
+                <div>
+                    10 h
+                </div>
+
+
+                <div>
+                    <strong>
+                        S/. 90
+                    </strong>
+                </div>
+
+
+                <div>
+
+                    <button
+                        onclick="
+                            seleccionarBus(
+                                'Perú Express',
+                                '14:00',
+                                '00:00',
+                                '10 h',
+                                'S/. 90'
+                            )
+                        "
+                    >
+                        Seleccionar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RUTA SUR -->
+
+            <div class="tabla bus">
+
+                <div class="informacion-bus">
+
+                    <img
+                        src="../imagenes/ruta-sur.png"
+                        alt="Ruta Sur"
+                    >
+
+                    <strong>
+                        Ruta Sur
+                    </strong>
+
+                </div>
+
+
+                <div>
+                    20:00
+                </div>
+
+
+                <div>
+                    06:00
+                </div>
+
+
+                <div>
+                    10 h
+                </div>
+
+
+                <div>
+                    <strong>
+                        S/. 95
+                    </strong>
+                </div>
+
+
+                <div>
+
+                    <button
+                        onclick="
+                            seleccionarBus(
+                                'Ruta Sur',
+                                '20:00',
+                                '06:00',
+                                '10 h',
+                                'S/. 95'
+                            )
+                        "
+                    >
+                        Seleccionar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+             RESULTADO DEL BUS SELECCIONADO
+        ===================================== -->
+
+        <section
+            id="resultado"
+            class="resultado"
+        >
+
+            <h2>
+                Bus seleccionado
+            </h2>
+
+
+            <div id="mensaje">
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 RutaPerú - Todos los derechos reservados
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script
+        src="../JS/buses.js"
+    ></script>
+
+
+</body>
+
+</html>
