@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RutaPerú - Inicio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../CSS/inicio.css">
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="navbar" id="main-header">
+    <div class="logo-container">
+      <img src="../imagenes/ruta-logo.png" alt="RutaPerú Logo" class="logo-img">
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">INICIO</a>
+      <a href="buses.html">BUSES</a>
+      <a href="reserva.html">RESERVA</a>
+      <a href="servicios.html">SERVICIOS</a>
+      <a href="boleto.html">BOLETO</a>
+    </nav>
+  </header>
+
+  <!-- Hero Principal -->
+  <section id="inicio" class="hero-section">
+    <div class="hero-container">
+      
+      <div class="hero-content">
+        <div class="badge-container">
+          <span class="badge">🚌 Viaja seguro por todo el Perú</span>
+        </div>
+        <h1>
+          Tu viaje soñado empieza con <span class="text-gradient">RutaPerú</span>
+        </h1>
+        <p>
+          Conectamos los principales destinos del país con el máximo confort, 
+          seguridad y los mejores precios del mercado. Reserva tu pasaje en minutos.
+        </p>
+
+        <!-- Buscador Interactivo -->
+        <form class="search-box" id="search-form">
+          <div class="input-group">
+            <label for="origen">Origen</label>
+            <select id="origen" name="origen" required>
+              <option value="Lima">Lima</option>
+              <option value="Arequipa">Arequipa</option>
+              <option value="Trujillo">Trujillo</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="destino">Destino</label>
+            <select id="destino" name="destino" required>
+              <option value="Cusco">Cusco</option>
+              <option value="Arequipa">Arequipa</option>
+              <option value="Puno">Puno</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-search">Buscar Buses</button>
+        </form>
+
+        <!-- Métricas Animadas -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-target="50">+0</span>
+            <span class="stat-label">Rutas Nacionales</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="100">0%</span>
+            <span class="stat-label">Viajes Garantizados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="image-wrapper">
+          <img src="../imagenes/buses.png" alt="Bus RutaPerú" class="hero-img">
+        </div>
+        <div class="floating-card">
+          <div class="card-icon">⭐</div>
+          <div class="card-text">
+            <strong>Servicio Premium</strong>
+            <span>Asientos reclinables de 160°</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="features-section">
+    <div class="section-title">
+      <h2>¿Por qué viajar con nosotros?</h2>
+      <p>Ofrecemos la mejor experiencia de viaje interprovincial</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Viaje Seguro</h3>
+        <p>Monitoreo GPS las 24 horas y conductores calificados en turnos rotativos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💺</div>
+        <h3>Máximo Confort</h3>
+        <p>Asientos ergonómicos, aire acondicionado, WiFi a bordo y conectores USB.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Reserva Rápida</h3>
+        <p>Selecciona tu asiento y obtén tu boleto digital al instante sin filas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rutas Populares -->
+  <section class="routes-section">
+    <div class="section-title">
+      <h2>Rutas Populares</h2>
+      <p>Explora los destinos más elegidos por nuestros pasajeros</p>
+    </div>
+    <div class="routes-grid">
+      <div class="route-card">
+        <div class="route-info">
+          <h3>Lima ➔ Cusco</h3>
+          <span class="route-price">Desde S/. 85.00</span>
+        </div>
+        <a href="buses.html?origen=Lima&destino=Cusco" class="btn-route">Ver Horarios</a>
+      </div>
+      <div class="route-card">
+        <div class="route-info">
+          <h3>Lima ➔ Arequipa</h3>
+          <span class="route-price">Desde S/. 90.00</span>
+        </div>
+        <a href="buses.html?origen=Lima&destino=Arequipa" class="btn-route">Ver Horarios</a>
+      </div>
+      <div class="route-card">
+        <div class="route-info">
+          <h3>Lima ➔ Trujillo</h3>
+          <span class="route-price">Desde S/. 75.00</span>
+        </div>
+        <a href="buses.html?origen=Lima&destino=Trujillo" class="btn-route">Ver Horarios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas Frecuentes -->
+  <section class="faq-section">
+    <div class="section-title">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Resuelve tus dudas antes de iniciar tu viaje</p>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">¿Con cuánta anticipación debo llegar al terminal? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>Se recomienda llegar al terminal 30 minutos antes de la hora de salida programada presentando tu DNI o pasaporte vigente.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Cuánto equipaje puedo llevar en el viaje? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>Tu pasaje incluye hasta 20 kg de equipaje en bodega sin costo adicional y un bolso de mano personal.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Puedo cambiar o cancelar la fecha de mi boleto? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>Sí, puedes reprogramar tu viaje hasta 24 horas antes de la partida desde nuestra sección de consulta de boleto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <p>© 2026 RutaPerú - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="../JS/inicio.js"></script>
+</body>
+</html>
