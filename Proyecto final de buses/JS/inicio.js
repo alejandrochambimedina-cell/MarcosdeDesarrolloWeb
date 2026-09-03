@@ -52,4 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 5. Menú responsive (botón de hamburguesa)
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (navToggle && navLinks) {
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Cierra el menú al elegir una opción (útil en celular).
+    navLinks.querySelectorAll('a').forEach(enlace => {
+      enlace.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Cierra el menú si se hace clic fuera de él.
+    document.addEventListener('click', (evento) => {
+      const clicDentro =
+        navLinks.contains(evento.target) ||
+        navToggle.contains(evento.target);
+
+      if (!clicDentro) {
+        navLinks.classList.remove('active');
+      }
+    });
+  }
+
 });

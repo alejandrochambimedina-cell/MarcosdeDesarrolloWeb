@@ -75,6 +75,31 @@ body {
   color: var(--accent-gold);
 }
 
+/* ===== BOTÓN DE MENÚ (HAMBURGUESA) ===== */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--white);
+  transition: background-color 0.3s ease;
+}
+
+.nav-toggle:hover span {
+  background-color: var(--accent-gold);
+}
+
 /* HERO SECTION */
 .hero-section {
   padding: 4rem 8%;
@@ -463,5 +488,33 @@ body {
   }
   .btn-search {
     width: 100%;
+  }
+
+  /* ===== MENÚ MÓVIL ===== */
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin-left: 0;
+    padding: 0.9rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
