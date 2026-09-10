@@ -1,0 +1,64 @@
+/* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
+:root {
+    --techlab-primary: #1f5f8b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    min-height: 28rem;
+    display: flex;
+    align-items: center;
+    background-color: #f5f7fa;
+}
+
+
+/* ========================================
+   TARJETAS
+======================================== */
+
+.card-img-top {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+
+:focus-visible {
+    outline: 0.2rem solid #ffbf47;
+    outline-offset: 0.15rem;
+}
+
+
+/* ========================================
+   MOVIMIENTO REDUCIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before {
+        scroll-behavior: auto !important;
+    }
+}
