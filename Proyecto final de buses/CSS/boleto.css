@@ -1,0 +1,256 @@
+/* ===== CONFIRMACIÓN Y BOLETO ===== */
+
+.boleto-main {
+    min-height: calc(100vh - 85px);
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+}
+
+.boleto-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(6, 26, 53, 0.10);
+}
+
+.boleto-titulo {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.5rem;
+}
+
+.boleto-titulo span {
+    color: #d9a520;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.boleto-titulo h1 {
+    margin: .35rem 0 .5rem;
+    color: #061a35;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.boleto-titulo p {
+    margin: 0;
+    color: #596579;
+}
+
+/* ===== SECCIONES ===== */
+
+.boleto-seccion {
+    margin-bottom: 2rem;
+}
+
+.boleto-seccion h2 {
+    margin-bottom: 1rem;
+    color: #172a46;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* ===== RESUMEN DE RESERVA ===== */
+
+.resumen-reserva {
+    background-color: #f1f3f5;
+    border-radius: 10px;
+    padding: 1.5rem 1.8rem;
+}
+
+.resumen-reserva dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem 2rem;
+    margin: 0;
+}
+
+.resumen-reserva dt {
+    margin-bottom: .2rem;
+    color: #596579;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.resumen-reserva dd {
+    margin: 0;
+    color: #172a46;
+    font-weight: 700;
+}
+
+/* ===== DETALLE DEL PRECIO ===== */
+
+.precio-detalle {
+    background-color: #f1f3f5;
+    border-radius: 10px;
+    padding: 1.5rem 1.8rem;
+}
+
+.precio-detalle ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.precio-detalle li {
+    display: flex;
+    justify-content: space-between;
+    padding: .4rem 0;
+    color: #4f5968;
+}
+
+.precio-detalle li.precio-total {
+    margin-top: .6rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d8dde5;
+    color: #172a46;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+/* ===== BOLETO (TICKET) ===== */
+
+.boleto-ticket {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 1.8rem 2rem;
+    border: 2px dashed #061a35;
+    border-radius: 14px;
+    background-color: #f8f9fb;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.ticket-empresa {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #b7bec9;
+    color: #061a35;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.ticket-empresa i {
+    margin-right: .4rem;
+    color: #d9a520;
+}
+
+.ticket-ruta {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #b7bec9;
+    color: #172a46;
+    font-weight: 700;
+    text-align: center;
+}
+
+.ticket-fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    font-size: .9rem;
+    color: #333333;
+}
+
+.ticket-fila span {
+    color: #596579;
+}
+
+.ticket-fila strong {
+    color: #172a46;
+}
+
+.ticket-codigo {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #b7bec9;
+    text-align: center;
+}
+
+.ticket-codigo span {
+    display: block;
+    margin-bottom: .3rem;
+    color: #596579;
+    font-size: .75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.ticket-codigo strong {
+    color: #061a35;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+/* ===== ACCIONES ===== */
+
+.boleto-acciones {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.2rem;
+}
+
+.btn-boleto {
+    background-color: #1d5794;
+    border-color: #1d5794;
+    color: #ffffff;
+    font-weight: 700;
+    padding: .7rem 1.4rem;
+}
+
+.btn-boleto:hover {
+    background-color: #164675;
+    border-color: #164675;
+    color: #ffffff;
+}
+
+.btn-boleto-secundario {
+    background-color: #e1e3e6;
+    border-color: #e1e3e6;
+    color: #172a46;
+    font-weight: 700;
+    padding: .7rem 1.4rem;
+}
+
+.btn-boleto-secundario:hover {
+    background-color: #d2d5d9;
+    border-color: #d2d5d9;
+    color: #172a46;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+    .boleto-main {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .boleto-card {
+        padding: 1.4rem;
+    }
+
+    .boleto-titulo h1 {
+        font-size: 1.6rem;
+    }
+
+    .resumen-reserva dl {
+        grid-template-columns: 1fr;
+        gap: .9rem;
+    }
+
+    .boleto-acciones {
+        flex-direction: column;
+    }
+
+    .boleto-acciones .btn {
+        width: 100%;
+    }
+}

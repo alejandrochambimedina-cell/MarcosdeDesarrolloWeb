@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Confirmación y Boleto | RutaPerú</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- CSS de tu proyecto -->
+    <link rel="stylesheet" href="../CSS/estilo_global.css">
+    <link rel="stylesheet" href="../CSS/boleto.css">
+</head>
+
+<body>
+
+    <!-- MENÚ -->
+    <header class="header">
+
+        <div class="navbar container">
+
+            <div class="logo">
+                <img src="../imagenes/ruta-logo.png"
+                     alt="Logo RutaPerú">
+            </div>
+
+            <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">
+                &#9776;
+            </button>
+
+            <nav class="menu" id="menu-principal">
+
+                <ul>
+                    <li>
+                        <a href="inicio.html">Inicio</a>
+                    </li>
+
+                    <li>
+                        <a href="buses.html">Buses</a>
+                    </li>
+
+                    <li>
+                        <a href="reserva.html">Reserva</a>
+                    </li>
+
+                    <li>
+                        <a href="servicios.html">Servicios</a>
+                    </li>
+
+                    <li>
+                        <a href="pasajero.html">Pasajero</a>
+                    </li>
+
+                    <li>
+                        <a href="boleto.html" class="activo">
+                            Boleto
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONFIRMACIÓN Y BOLETO -->
+    <main class="container boleto-main">
+
+        <section class="boleto-card">
+
+            <div class="boleto-titulo">
+
+                <span>CONFIRMACIÓN</span>
+
+                <h1>
+                    Tu boleto está listo
+                </h1>
+
+                <p>
+                    Revisa el resumen de tu reserva
+                    y guarda tu boleto para el viaje.
+                </p>
+
+            </div>
+
+
+            <!-- RESUMEN DE LA RESERVA -->
+            <section class="boleto-seccion">
+
+                <h2>Resumen de reserva</h2>
+
+                <div class="resumen-reserva">
+
+                    <dl>
+
+                        <div>
+                            <dt>Ruta</dt>
+                            <dd id="resumenRuta">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Fecha</dt>
+                            <dd id="resumenFecha">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Bus</dt>
+                            <dd id="resumenBus">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Pasajero</dt>
+                            <dd id="resumenPasajero">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Salida</dt>
+                            <dd id="resumenSalida">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Llegada</dt>
+                            <dd id="resumenLlegada">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Servicio</dt>
+                            <dd id="resumenServicio">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Asiento</dt>
+                            <dd id="resumenAsiento">-</dd>
+                        </div>
+
+                        <div>
+                            <dt>Equipaje</dt>
+                            <dd id="resumenEquipaje">-</dd>
+                        </div>
+
+                    </dl>
+
+                </div>
+
+            </section>
+
+
+            <!-- DETALLE DEL PRECIO -->
+            <section class="boleto-seccion">
+
+                <h2>Precio</h2>
+
+                <div class="precio-detalle">
+
+                    <ul>
+
+                        <li>
+                            <span>Pasaje</span>
+                            <strong id="precioPasaje">S/. 0</strong>
+                        </li>
+
+                        <li>
+                            <span>Equipaje</span>
+                            <strong id="precioEquipaje">S/. 0</strong>
+                        </li>
+
+                        <li class="precio-total">
+                            <span>Total</span>
+                            <strong id="precioTotal">S/. 0</strong>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOLETO -->
+            <section class="boleto-seccion">
+
+                <h2>Boleto</h2>
+
+                <div class="boleto-ticket">
+
+                    <div class="ticket-empresa">
+                        <i class="fa-solid fa-bus"></i>
+                        <span id="ticketBus">BUS ANDINO</span>
+                    </div>
+
+                    <div class="ticket-ruta" id="ticketRuta">
+                        Lima → Cusco
+                    </div>
+
+                    <div class="ticket-fila">
+                        <span>Fecha</span>
+                        <strong id="ticketFecha">-</strong>
+                    </div>
+
+                    <div class="ticket-fila">
+                        <span>Salida</span>
+                        <strong id="ticketSalida">-</strong>
+                    </div>
+
+                    <div class="ticket-fila">
+                        <span>Llegada</span>
+                        <strong id="ticketLlegada">-</strong>
+                    </div>
+
+                    <div class="ticket-fila">
+                        <span>Pasajero</span>
+                        <strong id="ticketPasajero">-</strong>
+                    </div>
+
+                    <div class="ticket-fila">
+                        <span>Asiento</span>
+                        <strong id="ticketAsiento">-</strong>
+                    </div>
+
+                    <div class="ticket-fila">
+                        <span>Servicio</span>
+                        <strong id="ticketServicio">-</strong>
+                    </div>
+
+                    <div class="ticket-codigo">
+                        <span>Código de reserva</span>
+                        <strong id="ticketCodigo">-</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACCIONES -->
+            <div class="boleto-acciones">
+
+                <button type="button"
+                        id="botonImprimir"
+                        class="btn btn-boleto-secundario">
+                    <i class="fa-solid fa-print"></i>
+                    Imprimir boleto
+                </button>
+
+                <a href="pasajero.html"
+                   id="botonNuevaReserva"
+                   class="btn btn-boleto">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    Nueva reserva
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+
+        <div class="footer-container container">
+
+            <div class="footer-box">
+                <h3>RutaPerú</h3>
+                <p>
+                    Viaja con comodidad,
+                    seguridad y confianza.
+                </p>
+            </div>
+
+            <div class="footer-box">
+                <h3>Información</h3>
+                <p>
+                    Conserva tu código de reserva,
+                    lo necesitarás para abordar tu bus.
+                </p>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contacto</h3>
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +51 987 654 321
+                </p>
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    contacto@rutaperu.com
+                </p>
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Lima, Perú
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © 2026 RutaPerú - Todos los derechos reservados
+            </p>
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="../JS/menu.js"></script>
+    <script src="../JS/boleto.js"></script>
+
+</body>
+
+</html>
