@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head(#{curso.detalle.titulo})}">
+</head>
+
+<body>
+
+<header th:replace="~{fragments/layout :: cabecera}"></header>
+
+<main class="container py-5">
+
+    <div class="detail-panel mx-auto"
+         th:object="${curso}">
+
+        <p class="text-muted">
+            Curso #<span th:text="*{id}">2</span>
+        </p>
+
+        <h1 th:text="*{titulo}">
+            Bootstrap
+        </h1>
+
+        <p class="fs-5">
+            <strong th:text="#{curso.horas}">
+                Horas
+            </strong>:
+            <span th:text="*{horas}">
+                16
+            </span>
+        </p>
+
+        <a th:href="@{/cursos}"
+           class="btn btn-primary"
+           th:text="#{accion.volver}">
+            Volver al catálogo
+        </a>
+
+    </div>
+
+</main>
+
+<footer th:replace="~{fragments/layout :: pie}"></footer>
+
+</body>
+</html>
