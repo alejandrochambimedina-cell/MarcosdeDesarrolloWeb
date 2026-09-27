@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -9,7 +9,7 @@
 
     <title>Buses disponibles - RutaPerú</title>
 
-    <link rel="stylesheet" href="../CSS/buses.css">
+    <link rel="stylesheet" href="/CSS/buses.css" th:href="@{/CSS/buses.css}">
 
 </head>
 
@@ -25,34 +25,34 @@
 
         <div class="logo">
 
-            <img src="../imagenes/ruta-logo.png" alt="Logo RutaPerú">
+            <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}" alt="Logo RutaPerú">
 
         </div>
 
 
         <nav>
 
-            <a href="inicio.html">
+            <a href="/inicio" th:href="@{/inicio}">
                 INICIO
             </a>
 
-            <a href="buses.html" class="activo">
+            <a href="/buses" th:href="@{/buses}" class="activo">
                 BUSES
             </a>
 
-            <a href="reserva.html">
+            <a href="/reserva" th:href="@{/reserva}">
                 RESERVA
             </a>
 
-            <a href="servicios.html">
+            <a href="/servicios" th:href="@{/servicios}">
                 SERVICIOS
             </a>
 
-            <a href="pasajero.html">
+            <a href="/pasajero" th:href="@{/pasajero}">
                 PASAJERO
             </a>
 
-            <a href="boleto.html">
+            <a href="/boleto" th:href="@{/boleto}">
                 BOLETO
             </a>
 
@@ -135,7 +135,7 @@
 
                 <div class="informacion-bus">
 
-                    <img src="../imagenes/bus-andino.png" alt="Bus Andino">
+                    <img src="/imagenes/bus-andino.png" th:src="@{/imagenes/bus-andino.png}" alt="Bus Andino">
 
                     <strong>
                         Bus Andino
@@ -192,7 +192,7 @@
 
                 <div class="informacion-bus">
 
-                    <img src="../imagenes/peru-express.png" alt="Perú Express">
+                    <img src="/imagenes/peru-express.png" th:src="@{/imagenes/peru-express.png}" alt="Perú Express">
 
                     <strong>
                         Perú Express
@@ -249,7 +249,7 @@
 
                 <div class="informacion-bus">
 
-                    <img src="../imagenes/ruta-sur.png" alt="Ruta Sur">
+                    <img src="/imagenes/ruta-sur.png" th:src="@{/imagenes/ruta-sur.png}" alt="Ruta Sur">
 
                     <strong>
                         Ruta Sur
@@ -342,7 +342,7 @@
 
     <!-- JAVASCRIPT -->
 
-    <script src="../JS/buses.js"></script>
+    <script src="/JS/buses.js" th:src="@{/JS/buses.js}"></script>
 
 
 </body>

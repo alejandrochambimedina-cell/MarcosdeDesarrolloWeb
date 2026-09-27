@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -16,8 +16,8 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
     <!-- CSS de tu proyecto -->
-    <link rel="stylesheet" href="../CSS/estilo_global.css">
-    <link rel="stylesheet" href="../CSS/pasajero.css">
+    <link rel="stylesheet" href="/CSS/estilo_global.css" th:href="@{/CSS/estilo_global.css}">
+    <link rel="stylesheet" href="/CSS/pasajero.css" th:href="@{/CSS/pasajero.css}">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <div class="navbar container">
 
             <div class="logo">
-                <img src="../imagenes/ruta-logo.png"
+                <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}"
                      alt="Logo RutaPerú">
             </div>
 
@@ -36,29 +36,29 @@
 
                 <ul>
                     <li>
-                        <a href="inicio.html">Inicio</a>
+                        <a href="/inicio" th:href="@{/inicio}">Inicio</a>
                     </li>
 
                     <li>
-                        <a href="buses.html">Buses</a>
+                        <a href="/buses" th:href="@{/buses}">Buses</a>
                     </li>
 
                     <li>
-                        <a href="reserva.html">Reserva</a>
+                        <a href="/reserva" th:href="@{/reserva}">Reserva</a>
                     </li>
 
                     <li>
-                        <a href="servicios.html">Servicios</a>
+                        <a href="/servicios" th:href="@{/servicios}">Servicios</a>
                     </li>
 
                     <li>
-                        <a href="pasajero.html" class="activo">
+                        <a href="/pasajero" th:href="@{/pasajero}" class="activo">
                             Pasajero
                         </a>
                     </li>
 
                     <li>
-                        <a href="boleto.html">Boleto</a>
+                        <a href="/boleto" th:href="@{/boleto}">Boleto</a>
                     </li>
                 </ul>
 
@@ -288,7 +288,7 @@
                 <!-- BOTONES -->
                 <div class="form-acciones mt-4">
 
-                    <a href="reserva.html"
+                    <a href="/reserva" th:href="@{/reserva}"
                        class="btn btn-secondary">
 
                         <i class="fa-solid fa-arrow-left"></i>
@@ -347,7 +347,7 @@
 
 
     <!-- JavaScript -->
-    <script src="../JS/pasajero.js"></script>
+    <script src="/JS/pasajero.js" th:src="@{/JS/pasajero.js}"></script>
 
 </body>
 

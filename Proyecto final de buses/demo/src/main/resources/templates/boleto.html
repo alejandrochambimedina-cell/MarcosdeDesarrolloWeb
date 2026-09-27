@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -16,8 +16,8 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
     <!-- CSS de tu proyecto -->
-    <link rel="stylesheet" href="../CSS/estilo_global.css">
-    <link rel="stylesheet" href="../CSS/boleto.css">
+    <link rel="stylesheet" href="/CSS/estilo_global.css" th:href="@{/CSS/estilo_global.css}">
+    <link rel="stylesheet" href="/CSS/boleto.css" th:href="@{/CSS/boleto.css}">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <div class="navbar container">
 
             <div class="logo">
-                <img src="../imagenes/ruta-logo.png"
+                <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}"
                      alt="Logo RutaPerú">
             </div>
 
@@ -40,27 +40,27 @@
 
                 <ul>
                     <li>
-                        <a href="inicio.html">Inicio</a>
+                        <a href="/inicio" th:href="@{/inicio}">Inicio</a>
                     </li>
 
                     <li>
-                        <a href="buses.html">Buses</a>
+                        <a href="/buses" th:href="@{/buses}">Buses</a>
                     </li>
 
                     <li>
-                        <a href="reserva.html">Reserva</a>
+                        <a href="/reserva" th:href="@{/reserva}">Reserva</a>
                     </li>
 
                     <li>
-                        <a href="servicios.html">Servicios</a>
+                        <a href="/servicios" th:href="@{/servicios}">Servicios</a>
                     </li>
 
                     <li>
-                        <a href="pasajero.html">Pasajero</a>
+                        <a href="/pasajero" th:href="@{/pasajero}">Pasajero</a>
                     </li>
 
                     <li>
-                        <a href="boleto.html" class="activo">
+                        <a href="/boleto" th:href="@{/boleto}" class="activo">
                             Boleto
                         </a>
                     </li>
@@ -252,7 +252,7 @@
                     Imprimir boleto
                 </button>
 
-                <a href="pasajero.html"
+                <a href="/pasajero" th:href="@{/pasajero}"
                    id="botonNuevaReserva"
                    class="btn btn-boleto">
                     <i class="fa-solid fa-rotate-right"></i>
@@ -315,8 +315,8 @@
 
 
     <!-- JavaScript -->
-    <script src="../JS/menu.js"></script>
-    <script src="../JS/boleto.js"></script>
+    <script src="/JS/menu.js" th:src="@{/JS/menu.js}"></script>
+    <script src="/JS/boleto.js" th:src="@{/JS/boleto.js}"></script>
 
 </body>
 
