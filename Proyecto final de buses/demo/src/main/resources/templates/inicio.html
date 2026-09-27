@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RutaPerú - Inicio</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="../CSS/inicio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="/CSS/inicio.css" th:href="@{/CSS/inicio.css}">
 </head>
+
 <body>
 
   <!-- Navegación -->
   <header class="navbar" id="main-header">
     <div class="logo-container">
-      <img src="../imagenes/ruta-logo.png" alt="RutaPerú Logo" class="logo-img">
+      <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}" alt="RutaPerú Logo" class="logo-img">
     </div>
 
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
@@ -26,20 +29,19 @@
     </button>
 
     <nav class="nav-links" id="nav-links">
-      <a href="inicio.html" class="active">INICIO</a>
-      <a href="buses.html">BUSES</a>
-      <a href="reserva.html">RESERVA</a>
-      <a href="servicios.html">SERVICIOS</a>
-      <a href="pasajero.html">PASAJERO</a>
-      <a href="boleto.html">BOLETO</a>
-      <a href="pasajero.html">PASAJERO</a>
+      <a href="/inicio" th:href="@{/inicio}" class="active">INICIO</a>
+      <a href="/buses" th:href="@{/buses}">BUSES</a>
+      <a href="/reserva" th:href="@{/reserva}">RESERVA</a>
+      <a href="/servicios" th:href="@{/servicios}">SERVICIOS</a>
+      <a href="/pasajero" th:href="@{/pasajero}">PASAJERO</a>
+      <a href="/boleto" th:href="@{/boleto}">BOLETO</a>
     </nav>
   </header>
 
   <!-- Hero Principal -->
   <section id="inicio" class="hero-section">
     <div class="hero-container">
-      
+
       <div class="hero-content">
         <div class="badge-container">
           <span class="badge">🚌 Viaja seguro por todo el Perú</span>
@@ -48,7 +50,7 @@
           Tu viaje soñado empieza con <span class="text-gradient">RutaPerú</span>
         </h1>
         <p>
-          Conectamos los principales destinos del país con el máximo confort, 
+          Conectamos los principales destinos del país con el máximo confort,
           seguridad y los mejores precios del mercado. Reserva tu pasaje en minutos.
         </p>
 
@@ -89,7 +91,7 @@
 
       <div class="hero-visual">
         <div class="image-wrapper">
-          <img src="../imagenes/buses.png" alt="Bus RutaPerú" class="hero-img">
+          <img src="/imagenes/buses.png" th:src="@{/imagenes/buses.png}" alt="Bus RutaPerú" class="hero-img">
         </div>
         <div class="floating-card">
           <div class="card-icon">⭐</div>
@@ -140,21 +142,21 @@
           <h3>Lima ➔ Cusco</h3>
           <span class="route-price">Desde S/. 85.00</span>
         </div>
-        <a href="buses.html?origen=Lima&destino=Cusco" class="btn-route">Ver Horarios</a>
+        <a href="/buses?origen=Lima&destino=Cusco" class="btn-route">Ver Horarios</a>
       </div>
       <div class="route-card">
         <div class="route-info">
           <h3>Lima ➔ Arequipa</h3>
           <span class="route-price">Desde S/. 90.00</span>
         </div>
-        <a href="buses.html?origen=Lima&destino=Arequipa" class="btn-route">Ver Horarios</a>
+        <a href="/buses?origen=Lima&destino=Arequipa" class="btn-route">Ver Horarios</a>
       </div>
       <div class="route-card">
         <div class="route-info">
           <h3>Lima ➔ Trujillo</h3>
           <span class="route-price">Desde S/. 75.00</span>
         </div>
-        <a href="buses.html?origen=Lima&destino=Trujillo" class="btn-route">Ver Horarios</a>
+        <a href="/buses?origen=Lima&destino=Trujillo" class="btn-route">Ver Horarios</a>
       </div>
     </div>
   </section>
@@ -167,9 +169,11 @@
     </div>
     <div class="faq-container">
       <div class="faq-item">
-        <button class="faq-question">¿Con cuánta anticipación debo llegar al terminal? <span class="arrow">▼</span></button>
+        <button class="faq-question">¿Con cuánta anticipación debo llegar al terminal? <span
+            class="arrow">▼</span></button>
         <div class="faq-answer">
-          <p>Se recomienda llegar al terminal 30 minutos antes de la hora de salida programada presentando tu DNI o pasaporte vigente.</p>
+          <p>Se recomienda llegar al terminal 30 minutos antes de la hora de salida programada presentando tu DNI o
+            pasaporte vigente.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -179,9 +183,11 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Puedo cambiar o cancelar la fecha de mi boleto? <span class="arrow">▼</span></button>
+        <button class="faq-question">¿Puedo cambiar o cancelar la fecha de mi boleto? <span
+            class="arrow">▼</span></button>
         <div class="faq-answer">
-          <p>Sí, puedes reprogramar tu viaje hasta 24 horas antes de la partida desde nuestra sección de consulta de boleto.</p>
+          <p>Sí, puedes reprogramar tu viaje hasta 24 horas antes de la partida desde nuestra sección de consulta de
+            boleto.</p>
         </div>
       </div>
     </div>
@@ -191,6 +197,7 @@
     <p>© 2026 RutaPerú - Todos los derechos reservados</p>
   </footer>
 
-  <script src="../JS/inicio.js"></script>
+  <script src="/JS/inicio.js" th:src="@{/JS/inicio.js}"></script>
 </body>
+
 </html>

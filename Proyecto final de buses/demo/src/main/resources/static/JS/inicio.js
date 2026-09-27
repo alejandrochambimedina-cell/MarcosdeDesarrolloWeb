@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const origen = document.getElementById('origen').value;
       const destino = document.getElementById('destino').value;
-      window.location.href = `buses.html?origen=${encodeURIComponent(origen)}&destino=${encodeURIComponent(destino)}`;
+      window.location.href = `/buses?origen=${encodeURIComponent(origen)}&destino=${encodeURIComponent(destino)}`;
     });
   }
 
