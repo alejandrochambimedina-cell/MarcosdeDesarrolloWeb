@@ -8,99 +8,8 @@
   --white: #ffffff;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-/* REGLA GLOBAL PARA EVITAR IMÁGENES GIGANTES */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-body {
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-  overflow-x: hidden;
-}
-
-/* NAVBAR CORREGIDO */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 8%;
-  background-color: var(--nav-bg);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-  background-color: rgba(24, 44, 68, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 0.75rem 8%;
-}
-
-.logo-container {
-  max-width: 180px;
-  max-height: 45px;
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  width: auto;
-  max-height: 45px;
-  object-fit: contain;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #d1d5db;
-  margin-left: 2rem;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent-gold);
-}
-
-/* ===== BOTÓN DE MENÚ (HAMBURGUESA) ===== */
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  padding: 6px;
-  cursor: pointer;
-}
-
-.nav-toggle span {
-  width: 26px;
-  height: 3px;
-  border-radius: 2px;
-  background-color: var(--white);
-  transition: background-color 0.3s ease;
-}
-
-.nav-toggle:hover span {
-  background-color: var(--accent-gold);
-}
-
 /* HERO SECTION */
+
 .hero-section {
   padding: 4rem 8%;
   min-height: calc(100vh - 130px);
@@ -488,33 +397,5 @@ body {
   }
   .btn-search {
     width: 100%;
-  }
-
-  /* ===== MENÚ MÓVIL ===== */
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color: var(--nav-bg);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links a {
-    margin-left: 0;
-    padding: 0.9rem 1.5rem;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
