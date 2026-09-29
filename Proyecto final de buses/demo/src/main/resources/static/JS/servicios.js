@@ -180,3 +180,31 @@ console.log(
 console.log(
     "Página de servicios cargada correctamente."
 );
+
+// ========================================
+// ACORDEÓN DE INFORMACIÓN
+// ========================================
+
+const botonesAcordeon = document.querySelectorAll(".acordeon-boton");
+
+botonesAcordeon.forEach(boton => {
+
+    boton.addEventListener("click", () => {
+
+        const item = boton.parentElement;
+
+        // Cerrar los demás
+        document.querySelectorAll(".acordeon-item").forEach(otroItem => {
+
+            if (otroItem !== item) {
+                otroItem.classList.remove("activo");
+            }
+
+        });
+
+        // Abrir o cerrar el seleccionado
+        item.classList.toggle("activo");
+
+    });
+
+});

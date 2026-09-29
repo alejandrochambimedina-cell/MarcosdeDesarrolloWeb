@@ -469,3 +469,204 @@
     }
 
 }
+
+/* =============== INFORMACIÓN IMPORTANTE ================ */
+
+.informacion-viaje {
+    margin-top: 3rem;
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e1e3e6;
+    border-bottom: 1px solid #e1e3e6;
+}
+
+.informacion-contenido {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ============ TÍTULO =============== */
+
+.informacion-titulo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.icono-info {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #0A1F44;
+    color: #FFC72C;
+    font-size: 1.4rem;
+}
+
+.informacion-titulo h2 {
+    margin: 0 0 0.3rem;
+    color: #0A1F44;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.informacion-titulo p {
+    margin: 0;
+    color: #596579;
+    font-size: 0.95rem;
+}
+
+/* ======= BENEFICIOS ============== */
+
+.beneficios-viaje {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.beneficio-viaje {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #e1e3e6;
+    border-radius: 8px;
+    color: #172a46;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.beneficio-viaje i {
+    color: #d9a520;
+}
+
+/* ============ ACORDEÓN ============== */
+
+.acordeon {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.acordeon-item {
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #d9dde3;
+    border-radius: 8px;
+}
+
+/* ============ BOTÓN DEL ACORDEÓN =============== */
+
+.acordeon-boton {
+    width: 100%;
+    padding: 1.1rem 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background-color: #ffffff;
+    color: #172a46;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.acordeon-boton span {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.acordeon-boton span i {
+    width: 22px;
+    color: #d9a520;
+    text-align: center;
+}
+
+.acordeon-boton > i {
+    color: #596579;
+    transition: transform 0.3s ease;
+}
+
+.acordeon-boton:hover {
+    background-color: #f5f7fa;
+}
+
+/* =========== CONTENIDO ================= */
+
+.acordeon-contenido {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.3rem;
+    background-color: #ffffff;
+    transition: max-height 0.3s ease,
+                padding 0.3s ease;
+}
+
+.acordeon-contenido p {
+    margin: 0;
+    color: #596579;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ======== ACORDEÓN ACTIVO ============= */
+
+.acordeon-item.activo .acordeon-contenido {
+    max-height: 150px;
+    padding: 0 1.3rem 1.2rem;
+}
+
+.acordeon-item.activo .acordeon-boton > i {
+    transform: rotate(180deg);
+}
+
+.acordeon-item.activo .acordeon-boton {
+    color: #0A1F44;
+}
+
+/* ============= RESPONSIVE ================ */
+
+@media (max-width: 768px) {
+
+    .informacion-viaje {
+        padding: 2rem 0;
+    }
+
+    .informacion-titulo {
+        align-items: flex-start;
+    }
+
+    .informacion-titulo h2 {
+        font-size: 1.4rem;
+    }
+
+    .informacion-titulo p {
+        font-size: 0.85rem;
+    }
+
+    .beneficios-viaje {
+        grid-template-columns: 1fr;
+    }
+
+    .acordeon-boton {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .acordeon-contenido {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+}

@@ -7,6 +7,15 @@
 
     <title>Datos del Pasajero | RutaPerú</title>
 
+    <!-- CSS de tu proyecto -->
+    <link rel="stylesheet"
+          href="/CSS/estilo_global.css"
+          th:href="@{/CSS/estilo_global.css}">
+
+    <link rel="stylesheet"
+          href="/CSS/pasajero.css"
+          th:href="@{/CSS/pasajero.css}">
+
     <!-- Bootstrap -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
@@ -15,58 +24,81 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-    <!-- CSS de tu proyecto -->
-    <link rel="stylesheet" href="/CSS/estilo_global.css" th:href="@{/CSS/estilo_global.css}">
-    <link rel="stylesheet" href="/CSS/pasajero.css" th:href="@{/CSS/pasajero.css}">
+    <!-- Google Fonts Roboto -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
 
     <!-- MENÚ -->
-    <header class="header">
+   <header class="header">
+    <div class="navbar container">
 
-        <div class="navbar container">
-
-            <div class="logo">
-                <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}"
-                     alt="Logo RutaPerú">
-            </div>
-
-            <nav class="menu">
-
-                <ul>
-                    <li>
-                        <a href="/inicio" th:href="@{/inicio}">Inicio</a>
-                    </li>
-
-                    <li>
-                        <a href="/buses" th:href="@{/buses}">Buses</a>
-                    </li>
-
-                    <li>
-                        <a href="/reserva" th:href="@{/reserva}">Reserva</a>
-                    </li>
-
-                    <li>
-                        <a href="/servicios" th:href="@{/servicios}">Servicios</a>
-                    </li>
-
-                    <li>
-                        <a href="/pasajero" th:href="@{/pasajero}" class="activo">
-                            Pasajero
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/boleto" th:href="@{/boleto}">Boleto</a>
-                    </li>
-                </ul>
-
-            </nav>
-
+        <div class="logo">
+            <img src="/imagenes/ruta-logo.png"
+                 th:src="@{/imagenes/ruta-logo.png}"
+                 alt="Logo Viajes del Norte">
         </div>
 
-    </header>
+        <button type="button"
+                class="menu-icon"
+                id="boton-menu"
+                aria-label="Abrir menu">
+            &#9776;
+        </button>
+
+        <nav class="menu" id="menu-principal">
+            <ul>
+                <li>
+                    <a href="/inicio" th:href="@{/inicio}">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/buses" th:href="@{/buses}">
+                        Buses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/reserva" th:href="@{/reserva}">
+                        Reserva
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/servicios" th:href="@{/servicios}">
+                        Servicios
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/pasajero"
+                       th:href="@{/pasajero}"
+                       class="activo">
+                        Pasajero
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/boleto" th:href="@{/boleto}">
+                        Boleto
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
 
 
     <!-- FORMULARIO -->
@@ -299,7 +331,7 @@
 
 
                     <button type="submit"
-                            class="btn btn-primary">
+                            class="btn btn-pasajero">
 
                         <i class="fa-solid fa-user-check"></i>
 
@@ -325,30 +357,37 @@
 
     <!-- PIE DE PÁGINA -->
     <footer class="footer">
-
-        <div class="container">
-
-            <h3>RutaPerú</h3>
-
-            <p>
-                Viaja con comodidad,
-                seguridad y confianza.
-            </p>
-
+        <div class="footer-container container">
+            <div class="footer-box">
+                <h3>Viajes del Norte</h3>
+                <p> Ofrecemos diferentes servicios de transporte
+                    para que puedas viajar con comodidad,
+                    seguridad y confianza. </p>
+            </div>
+            <div class="footer-box">
+                <h3>Información</h3>
+                <p> Conoce nuestras opciones de servicio
+                    y elige la alternativa que mejor se adapte
+                    a tu viaje. </p>
+            </div>
+            <div class="footer-box">
+                <h3>Contacto</h3>
+                <p> <i class="fa-solid fa-phone"></i>
+                    +51 987 654 321 </p>
+                <p> <i class="fa-solid fa-envelope"></i>
+                    contacto@RutaPerú.com </p>
+                <p> <i class="fa-solid fa-location-dot"></i>
+                    Lima, Perú </p>
+            </div>
         </div>
-
         <div class="footer-bottom">
-
-            © 2026 RutaPerú - Todos los derechos reservados
-
+            <p> © 2026 RutaPerú-
+                Todos los derechos reservados </p>
         </div>
-
     </footer>
-
 
     <!-- JavaScript -->
     <script src="/JS/pasajero.js" th:src="@{/JS/pasajero.js}"></script>
 
 </body>
-
 </html>

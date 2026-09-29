@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <!-- =========HEADER========== -->
@@ -75,7 +77,8 @@
                     <article class="servicio-card estandar" data-bs-toggle="modal" data-bs-target="#modalEstandar">
 
                         <div class="servicio-imagen">
-                            <img src="/imagenes/estandar.jpg" th:src="@{/imagenes/estandar.jpg}" alt="Servicio Estándar">
+                            <img src="/imagenes/estandar.jpg" th:src="@{/imagenes/estandar.jpg}"
+                                alt="Servicio Estándar">
                             <span>ESTÁNDAR</span>
                         </div>
 
@@ -408,6 +411,108 @@
                 </div>
             </div>
         </div>
+
+        <!-- ========= INFORMACIÓN IMPORTANTE ============ -->
+
+        <section class="informacion-viaje">
+            <div class="informacion-contenido">
+                <div class="informacion-titulo">
+                    <span class="icono-info"><i class="fa-solid fa-circle-info"></i></span>
+                    <div><h2>Información importante antes de tu viaje</h2>
+                        <p>Revisa estas recomendaciones antes de reservar tu boleto.</p>
+                    </div>
+                </div>
+
+                <!-- BENEFICIOS -->
+
+                <div class="beneficios-viaje">
+                    <div class="beneficio-viaje">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Viajes seguros</span>
+                    </div>
+
+                    <div class="beneficio-viaje">
+                        <i class="fa-solid fa-ticket"></i>
+                        <span>Reserva sencilla</span>
+                    </div>
+
+                    <div class="beneficio-viaje">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>Atención al pasajero</span>
+                    </div>
+                </div>
+
+                <!-- ACORDEONES -->
+
+                <div class="acordeon">
+
+                    <!-- EQUIPAJE -->
+
+                    <div class="acordeon-item">
+                        <button class="acordeon-boton" type="button">
+                            <span><i class="fa-solid fa-suitcase"></i>
+                                Equipaje permitido
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="acordeon-contenido">
+                            <p>Cada pasajero puede llevar hasta
+                                <strong>15 kg de equipaje en bodega</strong>
+                                y hasta <strong>8 kg de equipaje de mano</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- CAMBIOS -->
+
+                    <div class="acordeon-item">
+                        <button class="acordeon-boton" type="button">
+                            <span><i class="fa-solid fa-calendar-days"></i>Cambios y cancelaciones</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="acordeon-contenido">
+                            <p>Las solicitudes de cambio o cancelación pueden
+                                realizarse hasta <strong>24 horas antes del viaje</strong>.
+                                Las condiciones aplicables dependerán del boleto adquirido.</p>
+                        </div>
+                    </div>
+
+                    <!-- EMBARQUE -->
+
+                    <div class="acordeon-item">
+                        <button class="acordeon-boton" type="button">
+                            <span><i class="fa-solid fa-bus"></i>
+                                Normas de embarque
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="acordeon-contenido">
+                            <p>Se recomienda presentarse
+                                <strong>30 minutos antes de la salida</strong>.
+                                Es obligatorio presentar el DNI o documento de identidad
+                                correspondiente.</p>
+                        </div>
+                    </div>
+
+                    <!-- NIÑOS Y PASAJEROS -->
+
+                    <div class="acordeon-item">
+                        <button class="acordeon-boton" type="button">
+                            <span><i class="fa-solid fa-children"></i>
+                                Niños y políticas especiales
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="acordeon-contenido">
+                            <p>Los niños a partir de <strong>5 años</strong> requieren
+                                boleto. Los pasajeros que necesiten asistencia especial
+                                pueden solicitar apoyo antes de su viaje.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- ====== FOOTER ========= -->
@@ -447,4 +552,5 @@
     <script src="/JS/menu.js" th:src="@{/JS/menu.js}"></script>
     <script src="/JS/servicios.js" th:src="@{/JS/servicios.js}"></script>
 </body>
+
 </html>

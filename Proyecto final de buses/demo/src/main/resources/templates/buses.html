@@ -2,15 +2,26 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Buses disponibles - RutaPerú</title>
 
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="/CSS/estilo_global.css" th:href="@{/CSS/estilo_global.css}">
+
+    <!-- CSS ESPECÍFICO DE BUSES -->
     <link rel="stylesheet" href="/CSS/buses.css" th:href="@{/CSS/buses.css}">
 
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
 
 
@@ -21,43 +32,30 @@
          HEADER
     ===================================== -->
 
-    <header>
+    <header class="header">
 
-        <div class="logo">
+        <div class="navbar container">
 
-            <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}" alt="Logo RutaPerú">
+            <div class="logo">
+                <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}" alt="Logo Viajes del Norte">
+            </div>
 
+            <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">
+                &#9776;
+            </button>
+
+            <nav class="menu" id="menu-principal">
+
+                <ul>
+                    <li><a href="/inicio" th:href="@{/inicio}">Inicio</a></li>
+                    <li><a href="/buses" th:href="@{/buses}" class="activo">Buses</a></li>
+                    <li><a href="/reserva" th:href="@{/reserva}">Reserva</a></li>
+                    <li><a href="/servicios" th:href="@{/servicios}">Servicios</a></li>
+                    <li><a href="/pasajero" th:href="@{/pasajero}">Pasajero</a></li>
+                    <li><a href="/boleto" th:href="@{/boleto}">Boleto</a></li>
+                </ul>
+            </nav>
         </div>
-
-
-        <nav>
-
-            <a href="/inicio" th:href="@{/inicio}">
-                INICIO
-            </a>
-
-            <a href="/buses" th:href="@{/buses}" class="activo">
-                BUSES
-            </a>
-
-            <a href="/reserva" th:href="@{/reserva}">
-                RESERVA
-            </a>
-
-            <a href="/servicios" th:href="@{/servicios}">
-                SERVICIOS
-            </a>
-
-            <a href="/pasajero" th:href="@{/pasajero}">
-                PASAJERO
-            </a>
-
-            <a href="/boleto" th:href="@{/boleto}">
-                BOLETO
-            </a>
-
-        </nav>
-
     </header>
 
 
@@ -330,13 +328,36 @@
          FOOTER
     ===================================== -->
 
-    <footer>
-
-        <p>
-            © 2026 RutaPerú - Todos los derechos reservados
-        </p>
-
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-box">
+                <h3>Viajes del Norte</h3>
+                <p> Ofrecemos diferentes servicios de transporte
+                    para que puedas viajar con comodidad,
+                    seguridad y confianza. </p>
+            </div>
+            <div class="footer-box">
+                <h3>Información</h3>
+                <p> Conoce nuestras opciones de servicio
+                    y elige la alternativa que mejor se adapte
+                    a tu viaje. </p>
+            </div>
+            <div class="footer-box">
+                <h3>Contacto</h3>
+                <p> <i class="fa-solid fa-phone"></i>
+                    +51 987 654 321 </p>
+                <p> <i class="fa-solid fa-envelope"></i>
+                    contacto@RutaPerú.com </p>
+                <p> <i class="fa-solid fa-location-dot"></i>
+                    Lima, Perú </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> © 2026 RutaPerú-
+                Todos los derechos reservados </p>
+        </div>
     </footer>
+
 
 
 
