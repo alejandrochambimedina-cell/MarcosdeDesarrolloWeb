@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head(#{curso.lista.titulo})}">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<header th:replace="~{fragments/layout :: cabecera}">
+</header>
+
+<main id="contenido"
+      class="container py-4">
+
+    <h1 th:text="#{curso.lista.titulo}">
+        Catálogo de cursos
+    </h1>
+
+    <form method="get"
+          th:action="@{/cursos}">
+
+        <label for="q"
+               th:text="#{curso.buscar}">
+            Buscar cursos
+        </label>
+
+        <input
+            id="q"
+            name="q"
+            type="search"
+            maxlength="60"
+            th:value="${q}"
+            th:placeholder="#{curso.buscar.placeholder}">
+
+        <button type="submit"
+                th:text="#{accion.buscar}">
+            Buscar
+        </button>
+
+        <a th:if="${!#strings.isEmpty(q)}"
+           th:href="@{/cursos}"
+           th:text="#{accion.limpiar}">
+            Limpiar
+        </a>
+
+    </form>
+
+    <p th:text="#{curso.resultados(${#lists.size(cursos)})}">
+        3 curso(s) encontrado(s)
+    </p>
+
+    <div th:if="${#lists.isEmpty(cursos)}">
+
+        No se encontraron cursos.
+
+    </div>
+
+    <div th:each="curso : ${cursos}">
+
+        <h2 th:text="${curso.titulo}">
+            Spring Boot
+        </h2>
+
+        <p>
+            <span th:text="${curso.horas}">
+                20
+            </span>
+            horas
+        </p>
+
+        <a th:href="@{/cursos/{id}(id=${curso.id})}"
+           th:text="#{curso.ver}">
+            Ver detalle
+        </a>
+
+    </div>
+
+</main>
+
+<footer th:replace="~{fragments/layout :: pie}">
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Sección Hero Adaptable */
+.hero {
+    min-height: 25rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Control Proporcionado de Imágenes para Evitar Regresiones */
+.card-img-top {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* Puerta de Accesibilidad: Resaltado Visible de Foco de Teclado (RC-06) */
+:focus-visible {
+    outline: 0.25rem solid #ffbf47 !important;
+    outline-offset: 0.15rem;
+}
+
+/* Configuración para Usuarios con Preferencia de Animación Reducida (RC-07) */
+@media (prefers-reduced-motion: reduce) {
+    html { 
+        scroll-behavior: auto; 
+    }
+    *, *::before, *::after { 
+        scroll-behavior: auto !important; 
+        transition: none !important;
+        animation: none !important;
+    }
+}
