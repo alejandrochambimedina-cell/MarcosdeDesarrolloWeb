@@ -1,371 +1,151 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buses disponibles - RutaPerú</title>
 
-    <!-- CSS GLOBAL -->
-    <link rel="stylesheet" href="/CSS/estilo_global.css" th:href="@{/CSS/estilo_global.css}">
+    <!-- CSS GLOBAL Y ESPECÍFICO -->
+    <link rel="stylesheet" th:href="@{/CSS/estilo_global.css}">
+    <link rel="stylesheet" th:href="@{/CSS/buses.css}">
 
-    <!-- CSS ESPECÍFICO DE BUSES -->
-    <link rel="stylesheet" href="/CSS/buses.css" th:href="@{/CSS/buses.css}">
-
-    <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- FONT AWESOME (Para los iconos técnicos de las tarjetas) -->
+    <link rel="stylesheet" href="https://cloudflare.com">
 
     <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
 
-
-    <!-- =====================================
-         HEADER
-    ===================================== -->
-
+    <!-- HEADER / NAVBAR -->
     <header class="header">
-
         <div class="navbar container">
-
             <div class="logo">
-                <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}" alt="Logo Viajes del Norte">
+                <img th:src="@{/imagenes/ruta-logo.png}" alt="Logo Viajes del Norte">
             </div>
-
-            <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">
-                &#9776;
-            </button>
-
+            <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">☰</button>
             <nav class="menu" id="menu-principal">
-
                 <ul>
-                    <li><a href="/inicio" th:href="@{/inicio}">Inicio</a></li>
-                    <li><a href="/buses" th:href="@{/buses}" class="activo">Buses</a></li>
-                    <li><a href="/reserva" th:href="@{/reserva}">Reserva</a></li>
-                    <li><a href="/servicios" th:href="@{/servicios}">Servicios</a></li>
-                    <li><a href="/pasajero" th:href="@{/pasajero}">Pasajero</a></li>
-                    <li><a href="/boleto" th:href="@{/boleto}">Boleto</a></li>
+                    <li><a th:href="@{/inicio}">Inicio</a></li>
+                    <li><a th:href="@{/buses}" class="activo">Buses</a></li>
+                    <li><a th:href="@{/reserva}">Reserva</a></li>
+                    <li><a th:href="@{/servicios}">Servicios</a></li>
+                    <li><a th:href="@{/pasajero}">Pasajero</a></li>
+                    <li><a th:href="@{/boleto}">Boleto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-
-
-    <!-- =====================================
-         CONTENIDO PRINCIPAL
-    ===================================== -->
-
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
 
-
-        <!-- TÍTULO -->
-
+        <!-- SECCIÓN TÍTULO -->
         <section class="titulo-buses">
-
-            <h1>
-                🚌 Buses disponibles
-            </h1>
-
-            <p>
-                Selecciona el bus que deseas utilizar
-                para tu viaje de
-                <strong>Lima → Cusco</strong>.
-            </p>
-
+            <h1>🚌 Buses disponibles</h1>
+            <p>Selecciona el bus que deseas utilizar para tu viaje de <strong>Lima → Cusco</strong>.</p>
         </section>
 
-
-
-        <!-- LISTA DE BUSES -->
-
-        <section class="contenedor-buses">
-
-
-            <h2>
-                Buses disponibles
-            </h2>
-
-
-            <!-- ENCABEZADO -->
-
-            <div class="tabla encabezado">
-
-                <div>
-                    Bus
-                </div>
-
-                <div>
-                    Salida
-                </div>
-
-                <div>
-                    Llegada
-                </div>
-
-                <div>
-                    Duración
-                </div>
-
-                <div>
-                    Precio
-                </div>
-
-                <div>
-                    Acción
-                </div>
-
-            </div>
-
-
-
+        <!-- CATÁLOGO DE TARJETAS DE BUSES -->
+        <section class="seccion-catalogo">
+            
             <!-- BUS ANDINO -->
-
-            <div class="tabla bus">
-
-                <div class="informacion-bus">
-
-                    <img src="/imagenes/bus-andino.png" th:src="@{/imagenes/bus-andino.png}" alt="Bus Andino">
-
-                    <strong>
-                        Bus Andino
-                    </strong>
-
+            <div class="bus-card">
+                <div class="card-imagen-wrapper">
+                    <img th:src="@{/imagenes/bus-andino.png}" alt="Bus Andino">
                 </div>
-
-
-                <div>
-                    20:00
+                <div class="card-contenido">
+                    <h3>Bus Andino</h3>
+                    <div class="detalles-ruta">
+                        <div class="detalle-item"><i class="fa-solid fa-clock text-primary"></i> <span>Salida: 20:00</span></div>
+                        <div class="detalle-item"><i class="fa-solid fa-flag text-danger"></i> <span>Llegada: 06:00</span></div>
+                        <div class="detalle-item"><i class="fa-solid fa-hourglass-half text-info"></i> <span>Duración: 10 h</span></div>
+                    </div>
+                    <div class="card-footer-buses">
+                        <div class="precio-box">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-monto">S/. 85</span>
+                        </div>
+                        <button class="btn-seleccionar" onclick="seleccionarBus('Bus Andino', '20:00', '06:00', '10 h', 'S/. 85')">
+                            Seleccionar
+                        </button>
+                    </div>
                 </div>
-
-
-                <div>
-                    06:00
-                </div>
-
-
-                <div>
-                    10 h
-                </div>
-
-
-                <div>
-                    <strong>
-                        S/. 85
-                    </strong>
-                </div>
-
-
-                <div>
-
-                    <button onclick="
-                            seleccionarBus(
-                                'Bus Andino',
-                                '08:00',
-                                '18:00',
-                                '10 h',
-                                'S/. 85'
-                            )
-                        ">
-                        Seleccionar
-                    </button>
-
-                </div>
-
             </div>
-
-
 
             <!-- PERÚ EXPRESS -->
-
-            <div class="tabla bus">
-
-                <div class="informacion-bus">
-
-                    <img src="/imagenes/peru-express.png" th:src="@{/imagenes/peru-express.png}" alt="Perú Express">
-
-                    <strong>
-                        Perú Express
-                    </strong>
-
+            <div class="bus-card">
+                <div class="card-imagen-wrapper">
+                    <img th:src="@{/imagenes/peru-express.png}" alt="Perú Express">
                 </div>
-
-
-                <div>
-                    14:00
+                <div class="card-contenido">
+                    <h3>Perú Express</h3>
+                    <div class="detalles-ruta">
+                        <div class="detalle-item"><i class="fa-solid fa-clock text-primary"></i> <span>Salida: 14:00</span></div>
+                        <div class="detalle-item"><i class="fa-solid fa-flag text-danger"></i> <span>Llegada: 00:00</span></div>
+                        <div class="detalle-item"><i class="fa-solid fa-hourglass-half text-info"></i> <span>Duración: 10 h</span></div>
+                    </div>
+                    <div class="card-footer-buses">
+                        <div class="precio-box">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-monto">S/. 90</span>
+                        </div>
+                        <button class="btn-seleccionar" onclick="seleccionarBus('Perú Express', '14:00', '00:00', '10 h', 'S/. 90')">
+                            Seleccionar
+                        </button>
+                    </div>
                 </div>
-
-
-                <div>
-                    00:00
-                </div>
-
-
-                <div>
-                    10 h
-                </div>
-
-
-                <div>
-                    <strong>
-                        S/. 90
-                    </strong>
-                </div>
-
-
-                <div>
-
-                    <button onclick="
-                            seleccionarBus(
-                                'Perú Express',
-                                '14:00',
-                                '00:00',
-                                '10 h',
-                                'S/. 90'
-                            )
-                        ">
-                        Seleccionar
-                    </button>
-
-                </div>
-
             </div>
-
-
 
             <!-- RUTA SUR -->
-
-            <div class="tabla bus">
-
-                <div class="informacion-bus">
-
-                    <img src="/imagenes/ruta-sur.png" th:src="@{/imagenes/ruta-sur.png}" alt="Ruta Sur">
-
-                    <strong>
-                        Ruta Sur
-                    </strong>
-
+            <div class="bus-card">
+                <div class="card-imagen-wrapper">
+                    <img th:src="@{/imagenes/ruta-sur.png}" alt="Ruta Sur">
                 </div>
-
-
-                <div>
-                    20:00
+                <div class="card-contenido">
+                    <h3>Ruta Sur</h3>
+                    <div class="detalles-ruta">
+                        <div class="detalle-item"><i class="fa-solid fa-clock text-primary"></i> <span>Salida: 20:00</span></div>
+                        <div class="detalle-item"><i class="fa-solid fa-flag text-danger"></i> <span>Llegada: 06:00</span></div>
+                        <div class="detalle-item"><i class="fa-solid fa-hourglass-half text-info"></i> <span>Duración: 10 h</span></div>
+                    </div>
+                    <div class="card-footer-buses">
+                        <div class="precio-box">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-monto">S/. 95</span>
+                        </div>
+                        <button class="btn-seleccionar" onclick="seleccionarBus('Ruta Sur', '20:00', '06:00', '10 h', 'S/. 95')">
+                            Seleccionar
+                        </button>
+                    </div>
                 </div>
-
-
-                <div>
-                    06:00
-                </div>
-
-
-                <div>
-                    10 h
-                </div>
-
-
-                <div>
-                    <strong>
-                        S/. 95
-                    </strong>
-                </div>
-
-
-                <div>
-
-                    <button onclick="
-                            seleccionarBus(
-                                'Ruta Sur',
-                                '20:00',
-                                '06:00',
-                                '10 h',
-                                'S/. 95'
-                            )
-                        ">
-                        Seleccionar
-                    </button>
-
-                </div>
-
             </div>
-
 
         </section>
 
-
-
-        <!-- =====================================
-             RESULTADO DEL BUS SELECCIONADO
-        ===================================== -->
-
+        <!-- RESULTADO DEL BUS SELECCIONADO -->
         <section id="resultado" class="resultado">
-
-            <h2>
-                Bus seleccionado
-            </h2>
-
-
-            <div id="mensaje">
-
-            </div>
-
-
+            <h2>Bus seleccionado</h2>
+            <div id="mensaje">Aún no has seleccionado ningún bus.</div>
         </section>
-
 
     </main>
 
-
-
-    <!-- =====================================
-         FOOTER
-    ===================================== -->
-
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container container">
             <div class="footer-box">
                 <h3>Viajes del Norte</h3>
-                <p> Ofrecemos diferentes servicios de transporte
-                    para que puedas viajar con comodidad,
-                    seguridad y confianza. </p>
+                <p>Ofrecemos diferentes servicios de transporte para que puedas viajar con comodidad, seguridad y confianza.</p>
             </div>
-            <div class="footer-box">
-                <h3>Información</h3>
-                <p> Conoce nuestras opciones de servicio
-                    y elige la alternativa que mejor se adapte
-                    a tu viaje. </p>
-            </div>
-            <div class="footer-box">
-                <h3>Contacto</h3>
-                <p> <i class="fa-solid fa-phone"></i>
-                    +51 987 654 321 </p>
-                <p> <i class="fa-solid fa-envelope"></i>
-                    contacto@RutaPerú.com </p>
-                <p> <i class="fa-solid fa-location-dot"></i>
-                    Lima, Perú </p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p> © 2026 RutaPerú-
-                Todos los derechos reservados </p>
         </div>
     </footer>
 
-
-
-
-    <!-- JAVASCRIPT -->
-
-    <script src="/JS/buses.js" th:src="@{/JS/buses.js}"></script>
-
-
+    <!-- Tu archivo JS nativo -->
+    <script th:src="@{/JS/buses.js}"></script>
 </body>
-
 </html>
