@@ -48,6 +48,9 @@
           <li><a href="/servicios" th:href="@{/servicios}">Servicios</a></li>
           <li><a href="/pasajero" th:href="@{/pasajero}">Pasajero</a></li>
           <li><a href="/boleto" th:href="@{/boleto}">Boleto</a></li>
+          <!-- Apartado de Login y Registro agregado -->
+          <li><a href="/login" th:href="@{/login}">Iniciar Sesión</a></li>
+          <li><a href="/registro" th:href="@{/registro}">Registrarse</a></li>
         </ul>
       </nav>
     </div>
@@ -61,10 +64,14 @@
         <div class="badge-container">
           <span class="badge">🚌 Viaja seguro por todo el Perú</span>
         </div>
-        <h1>
+        
+        <!-- Título dinámico mediante Thymeleaf desde PaginaController.java -->
+        <h1 th:text="${tituloHero}">
           Tu viaje soñado empieza con <span class="text-gradient">RutaPerú</span>
         </h1>
-        <p>
+        
+        <!-- Mensaje dinámico mediante Thymeleaf -->
+        <p th:text="${mensajeHero}">
           Conectamos los principales destinos del país con el máximo confort,
           seguridad y los mejores precios del mercado. Reserva tu pasaje en minutos.
         </p>
@@ -157,21 +164,21 @@
           <h3>Lima ➔ Cusco</h3>
           <span class="route-price">Desde S/. 85.00</span>
         </div>
-        <a href="/buses?origen=Lima&destino=Cusco" class="btn-route">Ver Horarios</a>
+        <a href="/buses?origen=Lima&destino=Cusco" th:href="@{/buses(origen='Lima',destino='Cusco')}" class="btn-route">Ver Horarios</a>
       </div>
       <div class="route-card">
         <div class="route-info">
           <h3>Lima ➔ Arequipa</h3>
           <span class="route-price">Desde S/. 90.00</span>
         </div>
-        <a href="/buses?origen=Lima&destino=Arequipa" class="btn-route">Ver Horarios</a>
+        <a href="/buses?origen=Lima&destino=Arequipa" th:href="@{/buses(origen='Lima',destino='Arequipa')}" class="btn-route">Ver Horarios</a>
       </div>
       <div class="route-card">
         <div class="route-info">
           <h3>Lima ➔ Trujillo</h3>
           <span class="route-price">Desde S/. 75.00</span>
         </div>
-        <a href="/buses?origen=Lima&destino=Trujillo" class="btn-route">Ver Horarios</a>
+        <a href="/buses?origen=Lima&destino=Trujillo" th:href="@{/buses(origen='Lima',destino='Trujillo')}" class="btn-route">Ver Horarios</a>
       </div>
     </div>
   </section>
