@@ -1,0 +1,5 @@
+pe\edu\utp\techlab\controller\CourseController.class
+pe\edu\utp\techlab\dto\CourseDto.class
+pe\edu\utp\techlab\controller\PortalController.class
+pe\edu\utp\techlab\service\CourseService.class
+pe\edu\utp\techlab\dto\DurationDto.class
