@@ -1,0 +1,4 @@
+<!doctype html><html lang="es"><head><meta charset="UTF-8"><title>Catálogo de cursos</title></head><body>
+<h1>Catálogo de cursos</h1><form method="get" action="/cursos"><input name="q" value="[[${q}]]" placeholder="Buscar"><button>Buscar</button></form>
+<ul><li th:each="curso : ${cursos}"><a th:href="@{/cursos/{id}(id=${curso.id})}" th:text="${curso.titulo}"></a> - <span th:text="${curso.horas}"></span> horas</li></ul>
+<a href="/cursos/resumen">Resumen</a></body></html>
