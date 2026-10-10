@@ -1,0 +1,4 @@
+com\utp\marcos\model\User.class
+com\utp\marcos\controller\UserController.class
+com\utp\marcos\Application.class
+com\utp\marcos\controller\TaskController.class

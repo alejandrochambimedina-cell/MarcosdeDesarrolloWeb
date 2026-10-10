@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <ul>
+        <li th:each="task : ${tasks}" th:text="${task}">Tarea</li>
+    </ul>
+    <form action="/add-task" method="post">
+        <input type="text" name="task" placeholder="Nueva tarea" required>
+        <button type="submit">Agregar</button>
+    </form>
+    <br>
+    <a href="/users">Ir a Gestión de Usuarios</a>
+</body>
+</html>
