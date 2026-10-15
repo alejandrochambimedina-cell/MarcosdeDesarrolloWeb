@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${cursoId == null} ? 'Nuevo curso' : 'Editar curso')}">
+    <title>Formulario de curso</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <a class="visually-hidden-focusable position-absolute p-2 bg-white" href="#contenido">Saltar al contenido</a>
+    <header th:replace="~{fragments/layout :: cabecera}"></header>
+
+    <main id="contenido" class="container py-5">
+        <section class="mx-auto detail-panel">
+            <h1 class="display-6 fw-bold mb-4" th:text="${cursoId == null} ? 'Registrar nuevo curso' : 'Actualizar curso'">Formulario</h1>
+
+            <form th:action="${cursoId == null} ? @{/cursos} : @{/cursos/{id}/editar(id=${cursoId})}" th:object="${curso}" method="post">
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título del curso</label>
+                    <input type="text" id="titulo" th:field="*{titulo}" class="form-control" th:classappend="${#fields.hasErrors('titulo')} ? 'is-invalid'" maxlength="120">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">Error en título</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="horas" class="form-label">Horas académicas</label>
+                    <input type="number" id="horas" th:field="*{horas}" class="form-control" th:classappend="${#fields.hasErrors('horas')} ? 'is-invalid'" min="1" max="500">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('horas')}" th:errors="*{horas}">Error en horas</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary" th:text="#{accion.guardar}">Guardar curso</button>
+                    <a class="btn btn-outline-secondary" th:href="@{/cursos}" th:text="#{accion.volver}">Volver al catálogo</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: pie}"></footer>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package main.java.pe.edu.utp.techlab.service;
+package pe.edu.utp.techlab.service;
 
 import java.util.List;
 import java.util.Locale;

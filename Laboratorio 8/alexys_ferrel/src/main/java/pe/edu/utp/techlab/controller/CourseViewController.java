@@ -1,4 +1,4 @@
-package main.java.pe.edu.utp.techlab.controller;
+package pe.edu.utp.techlab.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
