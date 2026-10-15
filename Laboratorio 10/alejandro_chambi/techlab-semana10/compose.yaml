@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: techlab-mysql
+    environment:
+      MYSQL_DATABASE: techlab
+      MYSQL_USER: techlab_app
+      MYSQL_PASSWORD: ${DB_PASSWORD:-techlab_local_2026}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_local_2026}
+    ports: ["3306:3306"]
+    volumes: [techlab_mysql_data:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-utechlab_app", "-p$${MYSQL_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  techlab_mysql_data:
