@@ -399,3 +399,11 @@
     width: 100%;
   }
 }
+
+/* MENSAJE DE ERROR DEL BUSCADOR (origen = destino) */
+.mensaje-ruta {
+  margin: -1.5rem 0 1.5rem;
+  color: #b42318;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

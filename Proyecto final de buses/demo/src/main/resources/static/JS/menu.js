@@ -1,31 +1,53 @@
-/* ===== MENÚ RESPONSIVE - JAVASCRIPT ===== */
-/* Se usa en todas las páginas del sitio para abrir y cerrar
-   el menú cuando se muestra el botón de hamburguesa (celular). */
+/* ===== MENÚ RESPONSIVE + CIERRE DE SESIÓN - JAVASCRIPT ===== */
+/* Se usa en todas las páginas (lo carga el fragmento "footer"). */
 
-const botonMenu = document.querySelector(".menu-icon");
-const menuPrincipal = document.querySelector(".menu");
+(function () {
 
-if (botonMenu && menuPrincipal) {
+    const botonMenu = document.querySelector(".menu-icon");
+    const menuPrincipal = document.querySelector(".menu");
 
-    botonMenu.addEventListener("click", function () {
-        menuPrincipal.classList.toggle("activo");
-    });
+    if (botonMenu && menuPrincipal) {
 
-    // Cierra el menú al elegir una opción (útil en celular).
-    menuPrincipal.querySelectorAll("a").forEach(function (enlace) {
+        botonMenu.addEventListener("click", function () {
+            menuPrincipal.classList.toggle("activo");
+        });
+
+        // Cierra el menú al elegir una opción (útil en celular).
+        menuPrincipal.querySelectorAll("a").forEach(function (enlace) {
+            enlace.addEventListener("click", function () {
+                menuPrincipal.classList.remove("activo");
+            });
+        });
+
+        // Cierra el menú si se hace clic fuera de él.
+        document.addEventListener("click", function (evento) {
+            const clicDentro =
+                menuPrincipal.contains(evento.target) ||
+                botonMenu.contains(evento.target);
+
+            if (!clicDentro) {
+                menuPrincipal.classList.remove("activo");
+            }
+        });
+    }
+
+    // Al cerrar sesión se borra todo lo que quedó guardado del proceso de reserva.
+    const CLAVES_RESERVA = [
+        "rutaSeleccionada",
+        "servicioSeleccionado",
+        "reservaBus",
+        "asientosSeleccionados",
+        "equipajeSeleccionado",
+        "boletoEmitido",
+        "datosPasajero"
+    ];
+
+    document.querySelectorAll("[data-cerrar-sesion]").forEach(function (enlace) {
         enlace.addEventListener("click", function () {
-            menuPrincipal.classList.remove("activo");
+            CLAVES_RESERVA.forEach(function (clave) {
+                localStorage.removeItem(clave);
+            });
         });
     });
 
-    // Cierra el menú si se hace clic fuera de él.
-    document.addEventListener("click", function (evento) {
-        const clicDentro =
-            menuPrincipal.contains(evento.target) ||
-            botonMenu.contains(evento.target);
-
-        if (!clicDentro) {
-            menuPrincipal.classList.remove("activo");
-        }
-    });
-}
+})();

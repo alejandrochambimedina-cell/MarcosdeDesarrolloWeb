@@ -254,3 +254,81 @@
         width: 100%;
     }
 }
+
+/* ===== FORMULARIO DE DATOS DEL PASAJERO (último paso) ===== */
+
+.resumen-compacto {
+    margin-bottom: 2rem;
+}
+
+.resumen-compacto dl {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form-label {
+    margin-bottom: .45rem;
+    color: #172a46;
+    font-weight: 700;
+}
+
+.form-control,
+.form-select {
+    min-height: 48px;
+    border: 1px solid #d8dde5;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #1d5794;
+    box-shadow: 0 0 0 .2rem rgba(29, 87, 148, .12);
+}
+
+.form-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: .8rem;
+    margin-top: 2rem;
+}
+
+.btn-pasajero {
+    padding: .7rem 1.2rem;
+    border-color: #1d5794;
+    background: #1d5794;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.btn-pasajero:hover {
+    border-color: #164675;
+    background: #164675;
+    color: #ffffff;
+}
+
+/* Impresión: solo el boleto, sin menú ni botones */
+@media print {
+    .header,
+    .footer,
+    .boleto-acciones,
+    .menu-icon {
+        display: none !important;
+    }
+
+    .boleto-card {
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .resumen-compacto dl {
+        grid-template-columns: 1fr;
+    }
+
+    .form-acciones {
+        flex-direction: column;
+    }
+
+    .form-acciones .btn {
+        width: 100%;
+    }
+}

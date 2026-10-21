@@ -1,0 +1,11 @@
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\controller\CourseController.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\controller\CourseViewController.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\controller\PortalController.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\dto\CourseDto.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\dto\CourseInputDto.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\entity\Course.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\exception\CourseNotFoundException.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\exception\DuplicateCourseException.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\mapper\CourseMapper.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\repository\CourseRepository.java
+C:\Users\aleja\MarcosdeDesarrolloWeb\Laboratorio 10\alexys_ferrel\src\main\java\pe\edu\utp\techlab\service\CourseService.java

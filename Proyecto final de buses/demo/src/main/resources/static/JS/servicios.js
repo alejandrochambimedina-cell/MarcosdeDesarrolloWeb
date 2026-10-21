@@ -78,50 +78,43 @@ cards.forEach(card => {
 });
 
 /* =========== SELECCIONAR SERVICIO =============== */
+/* Flujo: Servicios -> Buses -> Reserva -> Boleto.
+   Si no hay sesión iniciada, primero se pide iniciar sesión. */
 
 botonesSeleccionar.forEach(boton => {
     boton.addEventListener("click", function (evento) {
         evento.preventDefault();
-        const modal =
-            this.closest(".modal");
-        const titulo =
-            modal.querySelector("h2");
-        if (!titulo) {
+
+        // Cada modal tiene una clase que identifica el servicio (estandar-modal, vip-modal, premium-modal)
+        const contenidoModal = this.closest(".modal-content");
+        if (!contenidoModal) {
             return;
         }
-        const nombreServicio =
-            titulo.textContent
-                .replace("Servicio ", "")
-                .trim();
-        const servicio =
-            buscarServicio(nombreServicio);
+
+        const servicio = servicios.find(
+            item => contenidoModal.classList.contains(item.clase + "-modal")
+        );
         if (!servicio) {
             return;
         }
 
-        /* CONFIRMACIÓN */
+        // Sin sesión: se envía a iniciar sesión (el servidor muestra el aviso).
+        if (document.body.dataset.autenticado !== "true") {
+            window.location.href = "/login?requerido";
+            return;
+        }
 
-        const confirmar = confirm(
-            "¿Deseas seleccionar el servicio " +
-            servicio.nombre +
-            " por S/. " +
-            servicio.precio +
-            "?"
+        localStorage.setItem(
+            "servicioSeleccionado",
+            JSON.stringify(servicio)
         );
 
-        if (confirmar) {
-            localStorage.setItem(
-                "servicioSeleccionado",
-                JSON.stringify(servicio)
-            );
-            alert(
-                "Has seleccionado el servicio " +
-                servicio.nombre +
-                "."
-            );
-            window.location.href =
-                "../HTML/reserva.html";
-        }
+        // Cambió el servicio: se descartan los pasos posteriores de una reserva anterior.
+        localStorage.removeItem("asientosSeleccionados");
+        localStorage.removeItem("equipajeSeleccionado");
+        localStorage.removeItem("boletoEmitido");
+
+        window.location.href = "/buses";
     });
 });
 

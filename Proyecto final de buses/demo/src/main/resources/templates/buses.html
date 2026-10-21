@@ -1,58 +1,47 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buses disponibles - RutaPerú</title>
-
-    <!-- CSS GLOBAL Y ESPECÍFICO -->
-    <link rel="stylesheet" th:href="@{/CSS/estilo_global.css}">
-    <link rel="stylesheet" th:href="@{/CSS/buses.css}">
-
-    <!-- FONT AWESOME (Para los iconos técnicos de las tarjetas) -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-</head>
+<head th:replace="~{fragments/layout :: head('Buses disponibles | RutaPerú', 'buses.css')}"></head>
 
 <body>
 
-    <!-- HEADER / NAVBAR -->
-    <header class="header">
-        <div class="navbar container">
-            <div class="logo">
-                <img th:src="@{/imagenes/ruta-logo.png}" alt="Logo Viajes del Norte">
-            </div>
-            <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">☰</button>
-            <nav class="menu" id="menu-principal">
-                <ul>
-                    <li><a th:href="@{/inicio}">Inicio</a></li>
-                    <li><a th:href="@{/buses}" class="activo">Buses</a></li>
-                    <li><a th:href="@{/reserva}">Reserva</a></li>
-                    <li><a th:href="@{/servicios}">Servicios</a></li>
-                    <li><a th:href="@{/pasajero}">Pasajero</a></li>
-                    <li><a th:href="@{/boleto}">Boleto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <header th:replace="~{fragments/layout :: header('buses')}"></header>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
 
-        <!-- SECCIÓN TÍTULO -->
+        <!-- TÍTULO -->
         <section class="titulo-buses">
             <h1>🚌 Buses disponibles</h1>
-            <p>Selecciona el bus que deseas utilizar para tu viaje de <strong>Lima → Cusco</strong>.</p>
+            <p>Selecciona el bus para tu viaje de <strong id="rutaTitulo">Lima → Cusco</strong>.</p>
         </section>
 
-        <!-- CATÁLOGO DE TARJETAS DE BUSES -->
+        <!-- RESUMEN DE LO ELEGIDO HASTA AHORA + FECHA DE VIAJE -->
+        <section class="seleccion-actual container">
+            <div class="seleccion-item">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <span>Servicio elegido</span>
+                    <strong id="servicioElegido">-</strong>
+                </div>
+                <a th:href="@{/servicios}" class="cambiar-servicio">Cambiar</a>
+            </div>
+
+            <div class="seleccion-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                <div>
+                    <label for="fechaViaje">Fecha de viaje</label>
+                    <input type="date" id="fechaViaje" class="campo-fecha">
+                </div>
+            </div>
+        </section>
+
+        <p id="mensajeFecha" class="mensaje-fecha container" hidden>
+            Elige una fecha de viaje válida (desde hoy en adelante).
+        </p>
+
+        <!-- CATÁLOGO DE BUSES -->
         <section class="seccion-catalogo">
-            
+
             <!-- BUS ANDINO -->
             <div class="bus-card">
                 <div class="card-imagen-wrapper">
@@ -67,10 +56,11 @@
                     </div>
                     <div class="card-footer-buses">
                         <div class="precio-box">
-                            <span class="precio-label">Precio</span>
-                            <span class="precio-monto">S/. 85</span>
+                            <span class="precio-label">Precio por asiento</span>
+                            <span class="precio-monto" data-precio>S/. -</span>
                         </div>
-                        <button class="btn-seleccionar" onclick="seleccionarBus('Bus Andino', '20:00', '06:00', '10 h', 'S/. 85')">
+                        <button type="button" class="btn-seleccionar"
+                                data-bus="Bus Andino" data-salida="20:00" data-llegada="06:00" data-duracion="10 h">
                             Seleccionar
                         </button>
                     </div>
@@ -91,10 +81,11 @@
                     </div>
                     <div class="card-footer-buses">
                         <div class="precio-box">
-                            <span class="precio-label">Precio</span>
-                            <span class="precio-monto">S/. 90</span>
+                            <span class="precio-label">Precio por asiento</span>
+                            <span class="precio-monto" data-precio>S/. -</span>
                         </div>
-                        <button class="btn-seleccionar" onclick="seleccionarBus('Perú Express', '14:00', '00:00', '10 h', 'S/. 90')">
+                        <button type="button" class="btn-seleccionar"
+                                data-bus="Perú Express" data-salida="14:00" data-llegada="00:00" data-duracion="10 h">
                             Seleccionar
                         </button>
                     </div>
@@ -115,10 +106,11 @@
                     </div>
                     <div class="card-footer-buses">
                         <div class="precio-box">
-                            <span class="precio-label">Precio</span>
-                            <span class="precio-monto">S/. 95</span>
+                            <span class="precio-label">Precio por asiento</span>
+                            <span class="precio-monto" data-precio>S/. -</span>
                         </div>
-                        <button class="btn-seleccionar" onclick="seleccionarBus('Ruta Sur', '20:00', '06:00', '10 h', 'S/. 95')">
+                        <button type="button" class="btn-seleccionar"
+                                data-bus="Ruta Sur" data-salida="20:00" data-llegada="06:00" data-duracion="10 h">
                             Seleccionar
                         </button>
                     </div>
@@ -127,25 +119,11 @@
 
         </section>
 
-        <!-- RESULTADO DEL BUS SELECCIONADO -->
-        <section id="resultado" class="resultado">
-            <h2>Bus seleccionado</h2>
-            <div id="mensaje">Aún no has seleccionado ningún bus.</div>
-        </section>
-
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container container">
-            <div class="footer-box">
-                <h3>Viajes del Norte</h3>
-                <p>Ofrecemos diferentes servicios de transporte para que puedas viajar con comodidad, seguridad y confianza.</p>
-            </div>
-        </div>
-    </footer>
+    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
 
-    <!-- Tu archivo JS nativo -->
     <script th:src="@{/JS/buses.js}"></script>
 </body>
+
 </html>

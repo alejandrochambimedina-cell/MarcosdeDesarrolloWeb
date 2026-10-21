@@ -1,0 +1,3 @@
+main\java\pe\edu\utp\techlab\controller\CourseController.class
+main\java\pe\edu\utp\techlab\exception\DuplicateCourseException.class
+main\java\pe\edu\utp\techlab\exception\CourseNotFoundException.class

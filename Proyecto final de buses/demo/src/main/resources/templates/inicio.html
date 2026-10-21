@@ -1,73 +1,12 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream:Proyecto final de buses/demo/src/main/resources/templates/inicio.html
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-=======
-<html lang="es">
->>>>>>> Stashed changes:Proyecto final de buses/HTML/index.html
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RutaPerú - Inicio</title>
-
-<<<<<<< Updated upstream:Proyecto final de buses/demo/src/main/resources/templates/inicio.html
-  <!-- CSS global -->
-  <link rel="stylesheet" href="/CSS/estilo_global.css" th:href="@{/CSS/estilo_global.css}">
-
-  <!-- CSS específico de Inicio -->
-  <link rel="stylesheet" href="/CSS/inicio.css" th:href="@{/CSS/inicio.css}">
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
-  <!-- Google Fonts Roboto -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-=======
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="../CSS/inicio.css">
->>>>>>> Stashed changes:Proyecto final de buses/HTML/index.html
-</head>
+<head th:replace="~{fragments/layout :: head('RutaPerú - Inicio', 'inicio.css')}"></head>
 
 <body>
 
-  <!-- Navegación -->
-  <header class="header">
-
-    <div class="navbar container">
-
-      <div class="logo">
-        <img src="/imagenes/ruta-logo.png" th:src="@{/imagenes/ruta-logo.png}" alt="Logo Viajes del Norte">
-      </div>
-
-      <button type="button" class="menu-icon" id="boton-menu" aria-label="Abrir menu">
-        &#9776;
-      </button>
-
-      <nav class="menu" id="menu-principal">
-
-        <ul>
-          <li><a href="/inicio" th:href="@{/inicio}" class="activo">Inicio</a></li>
-          <li><a href="/buses" th:href="@{/buses}">Buses</a></li>
-          <li><a href="/reserva" th:href="@{/reserva}">Reserva</a></li>
-          <li><a href="/servicios" th:href="@{/servicios}">Servicios</a></li>
-          <li><a href="/pasajero" th:href="@{/pasajero}">Pasajero</a></li>
-          <li><a href="/boleto" th:href="@{/boleto}">Boleto</a></li>
-          <!-- Apartado de Login y Registro agregado -->
-          <li><a href="/login" th:href="@{/login}">Iniciar Sesión</a></li>
-          <li><a href="/registro" th:href="@{/registro}">Registrarse</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Menú: sin sesión solo muestra Inicio, Servicios, Iniciar sesión y Registrarse -->
+  <header th:replace="~{fragments/layout :: header('inicio')}"></header>
 
   <!-- Hero Principal -->
   <section id="inicio" class="hero-section">
@@ -77,23 +16,18 @@
         <div class="badge-container">
           <span class="badge">🚌 Viaja seguro por todo el Perú</span>
         </div>
-        
-        <!-- Título dinámico mediante Thymeleaf desde PaginaController.java -->
-        <h1 th:text="${tituloHero}">
-          Tu viaje soñado empieza con <span class="text-gradient">RutaPerú</span>
+
+        <!-- Título y mensaje dinámicos mediante Thymeleaf (vienen de PaginaController) -->
+        <h1>
+          <span th:text="${tituloHero}">Tu viaje soñado empieza con</span>
+          <span class="text-gradient">RutaPerú</span>
         </h1>
-<<<<<<< Updated upstream:Proyecto final de buses/demo/src/main/resources/templates/inicio.html
-        
-        <!-- Mensaje dinámico mediante Thymeleaf -->
         <p th:text="${mensajeHero}">
-=======
-        <p>
->>>>>>> Stashed changes:Proyecto final de buses/HTML/index.html
           Conectamos los principales destinos del país con el máximo confort,
           seguridad y los mejores precios del mercado. Reserva tu pasaje en minutos.
         </p>
 
-        <!-- Buscador Interactivo -->
+        <!-- Buscador: guarda la ruta elegida y lleva al primer paso (Servicios) -->
         <form class="search-box" id="search-form">
           <div class="input-group">
             <label for="origen">Origen</label>
@@ -111,8 +45,9 @@
               <option value="Puno">Puno</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-search">Buscar Buses</button>
+          <button type="submit" class="btn btn-search">Reservar pasaje</button>
         </form>
+        <p id="mensaje-ruta" class="mensaje-ruta" hidden></p>
 
         <!-- Métricas Animadas -->
         <div class="hero-stats">
@@ -130,7 +65,7 @@
 
       <div class="hero-visual">
         <div class="image-wrapper">
-          <img src="/imagenes/buses.png" th:src="@{/imagenes/buses.png}" alt="Bus RutaPerú" class="hero-img">
+          <img th:src="@{/imagenes/buses.png}" alt="Bus RutaPerú" class="hero-img">
         </div>
         <div class="floating-card">
           <div class="card-icon">⭐</div>
@@ -169,7 +104,7 @@
     </div>
   </section>
 
-  <!-- Rutas Populares -->
+  <!-- Rutas Populares: al elegir una, se guarda la ruta y se pasa a Servicios -->
   <section class="routes-section">
     <div class="section-title">
       <h2>Rutas Populares</h2>
@@ -181,21 +116,21 @@
           <h3>Lima ➔ Cusco</h3>
           <span class="route-price">Desde S/. 85.00</span>
         </div>
-        <a href="/buses?origen=Lima&destino=Cusco" th:href="@{/buses(origen='Lima',destino='Cusco')}" class="btn-route">Ver Horarios</a>
+        <a th:href="@{/servicios}" class="btn-route" data-origen="Lima" data-destino="Cusco">Reservar</a>
       </div>
       <div class="route-card">
         <div class="route-info">
           <h3>Lima ➔ Arequipa</h3>
           <span class="route-price">Desde S/. 90.00</span>
         </div>
-        <a href="/buses?origen=Lima&destino=Arequipa" th:href="@{/buses(origen='Lima',destino='Arequipa')}" class="btn-route">Ver Horarios</a>
+        <a th:href="@{/servicios}" class="btn-route" data-origen="Lima" data-destino="Arequipa">Reservar</a>
       </div>
       <div class="route-card">
         <div class="route-info">
           <h3>Lima ➔ Trujillo</h3>
           <span class="route-price">Desde S/. 75.00</span>
         </div>
-        <a href="/buses?origen=Lima&destino=Trujillo" th:href="@{/buses(origen='Lima',destino='Trujillo')}" class="btn-route">Ver Horarios</a>
+        <a th:href="@{/servicios}" class="btn-route" data-origen="Lima" data-destino="Trujillo">Reservar</a>
       </div>
     </div>
   </section>
@@ -232,37 +167,9 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-container container">
-      <div class="footer-box">
-        <h3>Viajes del Norte</h3>
-        <p> Ofrecemos diferentes servicios de transporte
-          para que puedas viajar con comodidad,
-          seguridad y confianza. </p>
-      </div>
-      <div class="footer-box">
-        <h3>Información</h3>
-        <p> Conoce nuestras opciones de servicio
-          y elige la alternativa que mejor se adapte
-          a tu viaje. </p>
-      </div>
-      <div class="footer-box">
-        <h3>Contacto</h3>
-        <p> <i class="fa-solid fa-phone"></i>
-          +51 987 654 321 </p>
-        <p> <i class="fa-solid fa-envelope"></i>
-          contacto@RutaPerú.com </p>
-        <p> <i class="fa-solid fa-location-dot"></i>
-          Lima, Perú </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p> © 2026 RutaPerú-
-        Todos los derechos reservados </p>
-    </div>
-  </footer>
+  <th:block th:replace="~{fragments/layout :: footer}"></th:block>
 
-  <script src="/JS/inicio.js" th:src="@{/JS/inicio.js}"></script>
+  <script th:src="@{/JS/inicio.js}"></script>
 </body>
 
 </html>

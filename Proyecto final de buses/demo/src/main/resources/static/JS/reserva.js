@@ -7,44 +7,33 @@ const ASIENTOS_POR_FILA = 4;
 // Asientos ya ocupados (datos de ejemplo).
 const asientosOcupados = [3, 7, 11, 14, 18, 22, 26, 29, 33, 37];
 
-// Viaje y servicio por defecto, por si el usuario entra sin pasar por buses/servicios.
-const viajeDefecto = {
-    ruta: "Lima → Cusco",
-    bus: "Bus Andino",
-    salida: "20:00",
-    llegada: "06:00"
-};
+// Recuperamos lo elegido en los pasos anteriores (Servicios -> Buses).
+const servicioSeleccionado = JSON.parse(
+    localStorage.getItem("servicioSeleccionado") || "null"
+);
 
-const servicioDefecto = {
-    nombre: "Estándar",
-    precio: 85
-};
-
-// Recuperamos lo elegido en pasos anteriores (buses.html / servicios.html).
-const reservaBusGuardada = JSON.parse(
+const viaje = JSON.parse(
     localStorage.getItem("reservaBus") || "null"
 );
 
-const servicioSeleccionado = JSON.parse(
-    localStorage.getItem("servicioSeleccionado") || "null"
-) || servicioDefecto;
+// Sin servicio o sin bus no se puede reservar: se vuelve al paso que falta.
+if (!servicioSeleccionado) {
+    window.location.href = "/servicios";
+} else if (!viaje) {
+    window.location.href = "/buses";
+}
 
-const viaje = {
-    ruta: (reservaBusGuardada && reservaBusGuardada.ruta) || viajeDefecto.ruta,
-    bus: (reservaBusGuardada && reservaBusGuardada.bus) || viajeDefecto.bus,
-    salida: (reservaBusGuardada && reservaBusGuardada.salida) || viajeDefecto.salida,
-    llegada: (reservaBusGuardada && reservaBusGuardada.llegada) || viajeDefecto.llegada
-};
-
-const precioAsiento = servicioSeleccionado.precio;
+const precioAsiento = servicioSeleccionado ? servicioSeleccionado.precio : 0;
 
 // Pintamos el resumen del viaje en la parte de arriba.
-document.getElementById("resumenRuta").textContent = viaje.ruta;
-document.getElementById("resumenBus").textContent = viaje.bus;
-document.getElementById("resumenHorario").textContent =
-    viaje.salida + " - " + viaje.llegada;
-document.getElementById("resumenServicio").textContent =
-    servicioSeleccionado.nombre + " (S/. " + precioAsiento + ")";
+if (servicioSeleccionado && viaje) {
+    document.getElementById("resumenRuta").textContent = viaje.ruta;
+    document.getElementById("resumenBus").textContent = viaje.bus;
+    document.getElementById("resumenHorario").textContent =
+        viaje.fecha + " · " + viaje.salida + " - " + viaje.llegada;
+    document.getElementById("resumenServicio").textContent =
+        servicioSeleccionado.nombre + " (S/. " + precioAsiento + ")";
+}
 
 // Un objeto por asiento: número + estado (disponible/ocupado/seleccionado).
 const asientos = [];
@@ -210,15 +199,7 @@ function actualizarResumen() {
 // Pintar el resumen vacío al cargar la página.
 actualizarResumen();
 
-// Fecha con formato dd/mm/aaaa (igual que boleto.js).
-function formatearFecha(fecha) {
-    const dia = String(fecha.getDate()).padStart(2, "0");
-    const mes = String(fecha.getMonth() + 1).padStart(2, "0");
-    const anio = fecha.getFullYear();
-    return dia + "/" + mes + "/" + anio;
-}
-
-// Al enviar el formulario: guardar todo y pasar a pasajero.html.
+// Al enviar el formulario: guardar asientos y equipaje y pasar al boleto.
 formReserva.addEventListener("submit", function (evento) {
 
     evento.preventDefault();
@@ -238,25 +219,12 @@ formReserva.addEventListener("submit", function (evento) {
         "input[name='equipajeAdicional']:checked"
     ).value;
 
-    // Misma clave que usa boleto.js, para mantener los datos del viaje.
-    localStorage.setItem(
-        "reservaBus",
-        JSON.stringify({
-            ruta: viaje.ruta,
-            bus: viaje.bus,
-            salida: viaje.salida,
-            llegada: viaje.llegada,
-            fecha: (reservaBusGuardada && reservaBusGuardada.fecha) || formatearFecha(new Date())
-        })
-    );
-
-    // Así boleto.js usa el asiento real en vez de uno al azar.
-    localStorage.setItem("asientoAsignado", numerosSeleccionados[0]);
-
     localStorage.setItem(
         "asientosSeleccionados",
         JSON.stringify(numerosSeleccionados)
     );
+
+    localStorage.removeItem("boletoEmitido");
 
     localStorage.setItem(
         "equipajeSeleccionado",
@@ -271,7 +239,7 @@ formReserva.addEventListener("submit", function (evento) {
 
     // Pequeña espera para que se alcance a leer el mensaje.
     setTimeout(function () {
-        window.location.href = "pasajero.html";
+        window.location.href = "/boleto";
     }, 900);
 
 });

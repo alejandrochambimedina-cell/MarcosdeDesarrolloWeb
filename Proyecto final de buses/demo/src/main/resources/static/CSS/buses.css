@@ -241,3 +241,76 @@ main {
         gap: 20px;
     }
 }
+
+
+/* ==========================================================================
+   SELECCIÓN ACTUAL (servicio elegido + fecha de viaje)
+   ========================================================================== */
+.seleccion-actual,
+.mensaje-fecha {
+    width: 100%;
+}
+
+.seleccion-actual {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 30px;
+}
+
+.seleccion-item {
+    flex: 1 1 280px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    background-color: #ffffff;
+    border: 1px solid #e1e3e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.seleccion-item > i {
+    color: #d9a520;
+    font-size: 1.4rem;
+}
+
+.seleccion-item span,
+.seleccion-item label {
+    display: block;
+    margin: 0 0 2px;
+    color: #596579;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.seleccion-item strong {
+    color: #172a46;
+}
+
+.cambiar-servicio {
+    margin-left: auto;
+    color: #1d5794;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.cambiar-servicio:hover {
+    text-decoration: underline;
+}
+
+.campo-fecha {
+    padding: 6px 10px;
+    border: 1px solid #d8dde5;
+    border-radius: 8px;
+    color: #172a46;
+    font-weight: 600;
+}
+
+.mensaje-fecha {
+    margin: -14px 0 24px;
+    color: #b42318;
+    font-weight: 600;
+}
