@@ -1,0 +1,7 @@
+CREATE TABLE cursos (
+ id BIGINT NOT NULL AUTO_INCREMENT,
+ titulo VARCHAR(120) NOT NULL,
+ horas INT NOT NULL,
+ CONSTRAINT pk_cursos PRIMARY KEY (id),
+ CONSTRAINT uk_cursos_titulo UNIQUE (titulo)
+);

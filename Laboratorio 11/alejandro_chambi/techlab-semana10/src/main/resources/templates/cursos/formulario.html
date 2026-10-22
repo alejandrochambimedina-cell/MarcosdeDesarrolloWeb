@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${tituloPagina})}"><meta charset="UTF-8"><title>Curso</title></head>
+<body class="d-flex flex-column min-vh-100">
+<header th:replace="~{fragments/layout :: cabecera}"></header>
+<main id="contenido" class="container py-5">
+ <section class="form-panel mx-auto">
+  <p class="text-primary fw-semibold">Gestión del catálogo</p>
+  <h1 class="display-6 fw-bold" th:text="${tituloPagina}">Nuevo curso</h1>
+  <p class="text-secondary">Los datos se verifican en el servidor antes de guardarse.</p>
+  <form method="post" th:object="${form}" th:action="${cursoId == null} ? @{/cursos} : @{/cursos/{id}(id=${cursoId})}" novalidate>
+   <div class="mb-3">
+    <label class="form-label" for="titulo">Título</label>
+    <input class="form-control" id="titulo" th:field="*{titulo}" maxlength="120" required th:errorclass="is-invalid" th:attr="aria-invalid=${#fields.hasErrors('titulo')} ? 'true' : 'false'">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">Revise el título.</div>
+    <div class="form-text">Nombre único de hasta 120 caracteres.</div>
+   </div>
+   <div class="mb-3">
+    <label class="form-label" for="horas">Horas</label>
+    <input class="form-control" id="horas" type="number" th:field="*{horas}" min="1" max="500" required th:errorclass="is-invalid" th:attr="aria-invalid=${#fields.hasErrors('horas')} ? 'true' : 'false'">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('horas')}" th:errors="*{horas}">Ingrese horas válidas.</div>
+    <div class="form-text">Valor entero entre 1 y 500.</div>
+   </div>
+   <div class="mb-4">
+    <label class="form-label" for="categoriaId">Categoría</label>
+    <select class="form-select" id="categoriaId" th:field="*{categoriaId}" required th:errorclass="is-invalid" th:attr="aria-invalid=${#fields.hasErrors('categoriaId')} ? 'true' : 'false'">
+     <option value="">Seleccione una categoría</option>
+     <option th:each="categoria : ${categorias}" th:value="${categoria.id()}" th:text="${categoria.nombre()}">Front-end</option>
+    </select>
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('categoriaId')}" th:errors="*{categoriaId}">Seleccione una categoría válida.</div>
+   </div>
+   <button class="btn btn-primary" type="submit" th:text="${textoBoton}">Guardar</button>
+   <a class="btn btn-outline-secondary" th:href="@{/cursos}">Cancelar</a>
+  </form>
+ </section>
+</main>
+<footer th:replace="~{fragments/layout :: pie}"></footer>
+</body></html>
