@@ -24,9 +24,9 @@ const faseDatos = document.getElementById("faseDatos");
 const faseBoleto = document.getElementById("faseBoleto");
 
 function mostrarFase(fase) {
-    faseVacia.hidden = fase !== faseVacia;
-    faseDatos.hidden = fase !== faseDatos;
-    faseBoleto.hidden = fase !== faseBoleto;
+    if (faseVacia) faseVacia.hidden = fase !== faseVacia;
+    if (faseDatos) faseDatos.hidden = fase !== faseDatos;
+    if (faseBoleto) faseBoleto.hidden = fase !== faseBoleto;
 }
 
 const hayReserva = servicio && viaje && asientos && asientos.length > 0 && equipaje;
@@ -106,6 +106,69 @@ function pintarBoleto(boleto) {
     texto("ticketCodigo", boleto.codigo);
 }
 
+
+/* ===== RECUPERAR RESERVAS GUARDADAS EN H2 ===== */
+
+async function cargarReservasGuardadas() {
+    try {
+        const respuesta = await fetch("/api/reservas", {
+            method: "GET",
+            credentials: "same-origin"
+        });
+
+        if (respuesta.status === 401) {
+            window.location.href = "/login";
+            return;
+        }
+
+        if (!respuesta.ok) {
+            throw new Error("No se pudieron cargar tus reservas.");
+        }
+
+        const reservas = await respuesta.json();
+
+        if (!Array.isArray(reservas) || reservas.length === 0) {
+            mostrarFase(faseVacia);
+            return;
+        }
+
+        const reserva = reservas[0];
+
+        const boleto = {
+            id: reserva.id,
+            codigo: reserva.codigo,
+            ruta: reserva.ruta,
+            fecha: reserva.fechaViaje,
+            bus: reserva.bus,
+            salida: reserva.horaSalida,
+            llegada: reserva.horaLlegada,
+            servicio: reserva.servicio,
+            asientos: String(reserva.asientos || "")
+                .split(",")
+                .map(asiento => asiento.trim())
+                .filter(Boolean),
+            maletas: reserva.maletas,
+            total: Number(reserva.total),
+            pasajero: {
+                nombres: reserva.nombresPasajero,
+                apellidos: reserva.apellidosPasajero,
+                dni: reserva.dniPasajero,
+                telefono: reserva.telefonoPasajero,
+                correo: reserva.correoPasajero
+            }
+        };
+
+        // Los datos vienen de la base de datos.
+        pintarBoleto(boleto);
+        mostrarFase(faseBoleto);
+
+    } catch (error) {
+        console.error("Error al recuperar reservas:", error);
+        alert("No se pudieron cargar tus reservas. Inténtalo nuevamente.");
+    }
+}
+
+
 /* ========== ESTADO 2: FORMULARIO DE DATOS DEL PASAJERO ================ */
 
 function prepararFormulario() {
@@ -146,8 +209,8 @@ function prepararFormulario() {
     }
 
     // Al confirmar: se validan los datos, se genera el boleto y se muestra.
-    formPasajero.addEventListener("submit", function (evento) {
-
+    // Al confirmar: guardar primero en el servidor y después mostrar el boleto.
+    formPasajero.addEventListener("submit", async function (evento) {
         evento.preventDefault();
 
         if (!formPasajero.checkValidity()) {
@@ -166,44 +229,94 @@ function prepararFormulario() {
             contactoEmergencia: document.getElementById("emergencia").value.trim()
         };
 
-        localStorage.setItem("datosPasajero", JSON.stringify(pasajero));
+        const botonConfirmar = formPasajero.querySelector(
+            'button[type="submit"]'
+        );
 
-        // Se guarda una "foto" del boleto: no cambia aunque se modifique la reserva después.
-        const boleto = {
-            codigo: generarCodigoReserva(viaje.bus, viaje.fecha),
-            ruta: viaje.ruta,
-            fecha: viaje.fecha,
-            bus: viaje.bus,
-            salida: viaje.salida,
-            llegada: viaje.llegada,
-            servicio: servicio.nombre,
-            precioAsiento: servicio.precio,
-            asientos: asientos,
-            maletas: equipaje.maletas,
-            precioEquipaje: totales.precioEquipaje,
-            total: totales.total,
-            pasajero: pasajero
-        };
+        if (botonConfirmar) botonConfirmar.disabled = true;
 
-        localStorage.setItem("boletoEmitido", JSON.stringify(boleto));
+        try {
+            const respuesta = await fetch("/api/reservas", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "same-origin",
+                body: JSON.stringify({
+                    ruta: viaje.ruta,
+                    fecha: viaje.fecha,
+                    bus: viaje.bus,
+                    salida: viaje.salida,
+                    llegada: viaje.llegada,
+                    servicio: servicio.nombre,
+                    asientos: asientos,
+                    maletas: equipaje.maletas,
+                    total: totales.total,
+                    pasajero: pasajero
+                })
+            });
 
-        pintarBoleto(boleto);
-        mostrarFase(faseBoleto);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+            if (!respuesta.ok) {
+                const mensaje = await respuesta.text();
+                throw new Error(mensaje || "No se pudo guardar la reserva.");
+            }
+
+            const resultado = await respuesta.json();
+
+            const boleto = {
+                codigo: resultado.codigo,
+                id: resultado.id,
+                ruta: viaje.ruta,
+                fecha: viaje.fecha,
+                bus: viaje.bus,
+                salida: viaje.salida,
+                llegada: viaje.llegada,
+                servicio: servicio.nombre,
+                precioAsiento: servicio.precio,
+                asientos: asientos,
+                maletas: equipaje.maletas,
+                precioEquipaje: totales.precioEquipaje,
+                total: totales.total,
+                pasajero: pasajero
+            };
+
+            localStorage.setItem("datosPasajero", JSON.stringify(pasajero));
+            localStorage.setItem("boletoEmitido", JSON.stringify(boleto));
+
+            pintarBoleto(boleto);
+            mostrarFase(faseBoleto);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+        } catch (error) {
+            alert("No se pudo guardar la reserva: " + error.message);
+        } finally {
+            if (botonConfirmar) botonConfirmar.disabled = false;
+        }
     });
 }
 
 /* ========== DECIDIR QUÉ ESTADO MOSTRAR ================ */
 
-if (boletoEmitido) {
-    pintarBoleto(boletoEmitido);
-    mostrarFase(faseBoleto);
-} else if (hayReserva) {
-    prepararFormulario();
-    mostrarFase(faseDatos);
-} else {
-    mostrarFase(faseVacia);
+function inicializarBoleto() {
+    const boletoGuardado = leer("boletoEmitido");
+
+    if (boletoGuardado) {
+        // Mostrar el boleto emitido.
+        pintarBoleto(boletoGuardado);
+        mostrarFase(faseBoleto);
+
+    } else if (hayReserva) {
+        // Mostrar el formulario para una nueva reserva.
+        mostrarFase(faseDatos);
+        prepararFormulario();
+
+    } else {
+        // Recuperar las reservas guardadas en la base de datos.
+        cargarReservasGuardadas();
+    }
 }
+
+inicializarBoleto();
 
 /* ========== BOTONES DEL BOLETO ================ */
 

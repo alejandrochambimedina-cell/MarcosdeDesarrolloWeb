@@ -1,0 +1,15 @@
+
+# Base de datos local y archivos de H2
+Proyecto final de buses/demo/data/
+Proyecto final de buses/demo/*.trace.db
+Proyecto final de buses/demo/*.lock.db
+
+# Archivos generados por Maven
+Proyecto final de buses/demo/target/
+
+# Archivos temporales y registros de errores
+Proyecto final de buses/demo/error-arranque.txt
+
+# Archivos propios del sistema
+.DS_Store
+Thumbs.db

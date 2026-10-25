@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head('Mis reservas | RutaPerú', '')}"></head>
+
+<body>
+
+    <header th:replace="~{fragments/layout :: header('reservas')}"></header>
+
+    <main class="container py-5">
+        <h1 class="mb-4">Mis reservas</h1>
+
+        <div th:if="${reservas == null or reservas.isEmpty()}"
+             class="alert alert-info">
+            Todavía no tienes reservas registradas.
+        </div>
+
+        <div th:if="${reservas != null and !reservas.isEmpty()}"
+             class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Ruta</th>
+                        <th>Fecha de viaje</th>
+                        <th>Bus</th>
+                        <th>Asientos</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="reserva : ${reservas}">
+                        <td th:text="${reserva.codigo}"></td>
+                        <td th:text="${reserva.ruta}"></td>
+                        <td th:text="${reserva.fechaViaje}"></td>
+                        <td th:text="${reserva.bus}"></td>
+                        <td th:text="${reserva.asientos}"></td>
+                        <td th:text="|S/. ${reserva.total}|"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a th:href="@{/servicios}" class="btn btn-primary mt-3">
+            Reservar un viaje
+        </a>
+    </main>
+
+    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
+
+</body>
+</html>
