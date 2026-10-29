@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${tituloPagina} + ' | TechLab'">Curso | TechLab</title>
+</head>
+<body>
+    <h1 th:text="${tituloPagina}">Curso</h1>
+
+    <nav>
+        <a href="/cursos">Cursos</a> |
+        <a href="/cursos/resumen">Resumen</a> |
+        <a href="/users">Usuarios</a> |
+        <a href="/tasks">Tareas</a>
+    </nav>
+
+    <p th:if="${error}" th:text="${error}" style="color:red"></p>
+
+    <form th:object="${form}"
+          th:action="${cursoId == null} ? @{/cursos} : @{/cursos/{id}(id=${cursoId})}"
+          method="post">
+
+        <div>
+            <label for="titulo">Título del curso:</label>
+            <input id="titulo" type="text" th:field="*{titulo}"
+                   maxlength="120" required>
+        </div>
+
+        <div>
+            <label for="horas">Cantidad de horas:</label>
+            <input id="horas" type="number" th:field="*{horas}"
+                   min="1" max="500" required>
+        </div>
+
+        <p>
+            <button type="submit" th:text="${textoBoton}">
+                Guardar
+            </button>
+            <a href="/cursos">Cancelar</a>
+        </p>
+    </form>
+</body>
+</html>
