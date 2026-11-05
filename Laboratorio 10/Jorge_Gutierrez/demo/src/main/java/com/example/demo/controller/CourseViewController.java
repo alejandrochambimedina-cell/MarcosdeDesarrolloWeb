@@ -1,8 +1,15 @@
+
 package com.example.demo.controller;
 
+import java.util.Locale;
+
+import jakarta.validation.Valid;
+
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +24,7 @@ import com.example.demo.dto.CourseInputDto;
 import com.example.demo.exception.CourseNotFoundException;
 import com.example.demo.exception.DuplicateCourseTitleException;
 import com.example.demo.exception.InvalidCourseDataException;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.CourseService;
 
 @Controller
@@ -24,9 +32,16 @@ import com.example.demo.service.CourseService;
 public class CourseViewController {
 
     private final CourseService service;
+    private final CategoryRepository categoryRepository;
+    private final MessageSource messageSource;
 
-    public CourseViewController(CourseService service) {
+    public CourseViewController(
+            CourseService service,
+            CategoryRepository categoryRepository,
+            MessageSource messageSource) {
         this.service = service;
+        this.categoryRepository = categoryRepository;
+        this.messageSource = messageSource;
     }
 
     @GetMapping
@@ -72,15 +87,27 @@ public class CourseViewController {
 
     @PostMapping
     public String crear(
-            @ModelAttribute("form") CourseInputDto form,
+            @Valid @ModelAttribute("form") CourseInputDto form,
+            BindingResult resultado,
             Model model,
             RedirectAttributes redirect) {
 
+        if (resultado.hasErrors()) {
+            return mostrarFormulario(
+                    form, null, "Nuevo curso", "Registrar curso",
+                    null, model);
+        }
+
         try {
             CourseDto creado = service.crear(form);
+
             redirect.addFlashAttribute(
-                    "mensaje", "Curso registrado correctamente");
+                    "mensaje",
+                    messageSource.getMessage(
+                            "curso.creado", null, Locale.getDefault()));
+
             return "redirect:/cursos/" + creado.id();
+
         } catch (InvalidCourseDataException
                 | DuplicateCourseTitleException exception) {
             return mostrarFormulario(
@@ -94,8 +121,10 @@ public class CourseViewController {
         CourseDto curso = service.buscarPorId(id)
                 .orElseThrow(() -> notFound(id));
 
-        CourseInputDto form =
-                new CourseInputDto(curso.titulo(), curso.horas());
+        CourseInputDto form = new CourseInputDto(
+                curso.titulo(),
+                curso.horas(),
+                curso.categoria().id());
 
         return mostrarFormulario(
                 form, id, "Editar curso", "Guardar cambios", null, model);
@@ -104,15 +133,27 @@ public class CourseViewController {
     @PostMapping("/{id}")
     public String actualizar(
             @PathVariable long id,
-            @ModelAttribute("form") CourseInputDto form,
+            @Valid @ModelAttribute("form") CourseInputDto form,
+            BindingResult resultado,
             Model model,
             RedirectAttributes redirect) {
 
+        if (resultado.hasErrors()) {
+            return mostrarFormulario(
+                    form, id, "Editar curso", "Guardar cambios",
+                    null, model);
+        }
+
         try {
             service.actualizar(id, form);
+
             redirect.addFlashAttribute(
-                    "mensaje", "Curso actualizado correctamente");
+                    "mensaje",
+                    messageSource.getMessage(
+                            "curso.actualizado", null, Locale.getDefault()));
+
             return "redirect:/cursos/" + id;
+
         } catch (InvalidCourseDataException
                 | DuplicateCourseTitleException exception) {
             return mostrarFormulario(
@@ -130,9 +171,14 @@ public class CourseViewController {
 
         try {
             service.eliminar(id);
+
             redirect.addFlashAttribute(
-                    "mensaje", "Curso eliminado correctamente");
+                    "mensaje",
+                    messageSource.getMessage(
+                            "curso.eliminado", null, Locale.getDefault()));
+
             return "redirect:/cursos";
+
         } catch (CourseNotFoundException exception) {
             throw notFound(id);
         }
@@ -151,6 +197,9 @@ public class CourseViewController {
         model.addAttribute("tituloPagina", tituloPagina);
         model.addAttribute("textoBoton", textoBoton);
         model.addAttribute("error", error);
+        model.addAttribute(
+                "categorias",
+                categoryRepository.findAllByOrderByNombreAsc());
 
         return "cursos/formulario";
     }

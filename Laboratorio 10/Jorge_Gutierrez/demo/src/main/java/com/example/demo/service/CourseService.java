@@ -1,3 +1,4 @@
+
 package com.example.demo.service;
 
 import java.util.List;
@@ -9,11 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dto.CourseDto;
 import com.example.demo.dto.CourseInputDto;
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Course;
 import com.example.demo.exception.CourseNotFoundException;
 import com.example.demo.exception.DuplicateCourseTitleException;
 import com.example.demo.exception.InvalidCourseDataException;
 import com.example.demo.mapper.CourseMapper;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CourseRepository;
 
 @Service
@@ -27,10 +30,15 @@ public class CourseService {
 
     private final CourseRepository repository;
     private final CourseMapper mapper;
+    private final CategoryRepository categoryRepository;
 
-    public CourseService(CourseRepository repository, CourseMapper mapper) {
+    public CourseService(
+            CourseRepository repository,
+            CourseMapper mapper,
+            CategoryRepository categoryRepository) {
         this.repository = repository;
         this.mapper = mapper;
+        this.categoryRepository = categoryRepository;
     }
 
     public List<CourseDto> buscar(String texto) {
@@ -65,6 +73,7 @@ public class CourseService {
     @Transactional
     public CourseDto crear(CourseInputDto input) {
         CourseData data = normalizar(input);
+        Category categoria = buscarCategoria(input.getCategoriaId());
 
         if (repository.existsByTituloIgnoreCase(data.titulo())) {
             throw new DuplicateCourseTitleException(data.titulo());
@@ -72,6 +81,8 @@ public class CourseService {
 
         try {
             Course curso = Course.crear(data.titulo(), data.horas());
+            curso.asignarCategoria(categoria);
+
             return mapper.toDto(repository.saveAndFlush(curso));
         } catch (DataIntegrityViolationException exception) {
             throw new DuplicateCourseTitleException(data.titulo());
@@ -84,12 +95,14 @@ public class CourseService {
             .orElseThrow(() -> new CourseNotFoundException(id));
 
         CourseData data = normalizar(input);
+        Category categoria = buscarCategoria(input.getCategoriaId());
 
         if (repository.existsByTituloIgnoreCaseAndIdNot(data.titulo(), id)) {
             throw new DuplicateCourseTitleException(data.titulo());
         }
 
         curso.actualizar(data.titulo(), data.horas());
+        curso.asignarCategoria(categoria);
 
         try {
             repository.flush();
@@ -108,6 +121,19 @@ public class CourseService {
         repository.flush();
     }
 
+    private Category buscarCategoria(Long categoriaId) {
+        if (categoriaId == null) {
+            throw new InvalidCourseDataException(
+                "La categoría es obligatoria"
+            );
+        }
+
+        return categoryRepository.findById(categoriaId)
+            .orElseThrow(() -> new InvalidCourseDataException(
+                "La categoría seleccionada no existe"
+            ));
+    }
+
     private CourseData normalizar(CourseInputDto input) {
         if (input == null) {
             throw new InvalidCourseDataException(
@@ -121,7 +147,9 @@ public class CourseService {
             .replaceAll("\\s+", " ");
 
         if (titulo.isBlank()) {
-            throw new InvalidCourseDataException("El título es obligatorio");
+            throw new InvalidCourseDataException(
+                "El título es obligatorio"
+            );
         }
 
         if (titulo.length() > MAX_TITLE_LENGTH) {

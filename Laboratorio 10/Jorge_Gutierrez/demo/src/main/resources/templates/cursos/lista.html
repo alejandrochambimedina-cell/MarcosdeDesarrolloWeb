@@ -37,6 +37,7 @@
                 <th>ID</th>
                 <th>Título</th>
                 <th>Horas</th>
+                <th>Categoría</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -45,6 +46,7 @@
                 <td th:text="${curso.id}"></td>
                 <td th:text="${curso.titulo}"></td>
                 <td th:text="${curso.horas}"></td>
+                <td th:text="${curso.categoria.nombre}"></td>
                 <td>
                     <a th:href="@{/cursos/{id}(id=${curso.id})}">
                         Ver
@@ -63,7 +65,7 @@
             </tr>
 
             <tr th:if="${#lists.isEmpty(cursos)}">
-                <td colspan="4">No se encontraron cursos.</td>
+                <td colspan="5">No se encontraron cursos.</td>
             </tr>
         </tbody>
     </table>

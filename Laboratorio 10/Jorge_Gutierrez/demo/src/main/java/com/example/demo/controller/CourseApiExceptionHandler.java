@@ -1,9 +1,14 @@
+
 package com.example.demo.controller;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -13,6 +18,30 @@ import com.example.demo.exception.InvalidCourseDataException;
 
 @RestControllerAdvice(assignableTypes = CourseRestController.class)
 public class CourseApiExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ProblemDetail> validation(
+            MethodArgumentNotValidException exception) {
+
+        Map<String, String> errores = new LinkedHashMap<>();
+
+        exception.getBindingResult().getFieldErrors().forEach(error ->
+            errores.putIfAbsent(
+                error.getField(),
+                error.getDefaultMessage()
+            )
+        );
+
+        ProblemDetail body = ProblemDetail.forStatusAndDetail(
+            HttpStatus.BAD_REQUEST,
+            "Uno o más campos contienen datos inválidos"
+        );
+
+        body.setTitle("Error de validación");
+        body.setProperty("errores", errores);
+
+        return ResponseEntity.badRequest().body(body);
+    }
 
     @ExceptionHandler(InvalidCourseDataException.class)
     public ResponseEntity<ProblemDetail> invalidData(

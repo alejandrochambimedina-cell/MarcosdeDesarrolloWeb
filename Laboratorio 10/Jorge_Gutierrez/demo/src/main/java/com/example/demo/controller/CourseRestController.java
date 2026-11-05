@@ -1,7 +1,10 @@
+
 package com.example.demo.controller;
 
 import java.net.URI;
 import java.util.List;
+
+import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,13 +47,12 @@ public class CourseRestController {
 
     @PostMapping
     public ResponseEntity<CourseDto> crear(
-            @RequestBody CourseInputDto input,
+            @Valid @RequestBody CourseInputDto input,
             UriComponentsBuilder uriBuilder) {
 
         CourseDto creado = courseService.crear(input);
 
-        URI location = uriBuilder
-                .path("/api/v1/cursos/{id}")
+        URI location = uriBuilder.path("/api/v1/cursos/{id}")
                 .buildAndExpand(creado.id())
                 .toUri();
 
@@ -60,7 +62,7 @@ public class CourseRestController {
     @PutMapping("/{id}")
     public CourseDto actualizar(
             @PathVariable long id,
-            @RequestBody CourseInputDto input) {
+            @Valid @RequestBody CourseInputDto input) {
         return courseService.actualizar(id, input);
     }
 
