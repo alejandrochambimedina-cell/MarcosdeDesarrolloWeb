@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalle del curso | TechLab</title>
+</head>
+<body>
+    <h1>Detalle del curso</h1>
+
+    <nav>
+        <a href="/cursos">Cursos</a> |
+        <a href="/cursos/resumen">Resumen</a> |
+        <a href="/users">Usuarios</a> |
+        <a href="/tasks">Tareas</a>
+    </nav>
+
+    <p th:if="${mensaje}" th:text="${mensaje}"></p>
+
+    <p>
+        <strong>ID:</strong>
+        <span th:text="${curso.id}"></span>
+    </p>
+
+    <p>
+        <strong>Título:</strong>
+        <span th:text="${curso.titulo}"></span>
+    </p>
+
+    <p>
+        <strong>Horas:</strong>
+        <span th:text="${curso.horas}"></span>
+    </p>
+
+    <p>
+        <a th:href="@{/cursos/{id}/editar(id=${curso.id})}">
+            Editar curso
+        </a>
+    </p>
+
+    <form th:action="@{/cursos/{id}/eliminar(id=${curso.id})}"
+          method="post"
+          onsubmit="return confirm('¿Seguro que deseas eliminar este curso?');">
+        <button type="submit">Eliminar curso</button>
+    </form>
+
+    <p><a href="/cursos">Volver al catálogo</a></p>
+</body>
+</html>

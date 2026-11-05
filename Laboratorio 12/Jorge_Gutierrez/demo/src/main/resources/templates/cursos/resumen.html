@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resumen | TechLab</title>
+</head>
+<body>
+    <h1>Resumen de cursos</h1>
+
+    <nav>
+        <a href="/cursos">Cursos</a> |
+        <a href="/cursos/resumen">Resumen</a> |
+        <a href="/users">Usuarios</a> |
+        <a href="/tasks">Tareas</a>
+    </nav>
+
+    <p>
+        Total de cursos:
+        <strong th:text="${cantidadCursos}">0</strong>
+    </p>
+
+    <p>
+        Total de horas:
+        <strong th:text="${totalHoras}">0</strong>
+    </p>
+
+    <p><a href="/cursos">Volver al catálogo</a></p>
+</body>
+</html>

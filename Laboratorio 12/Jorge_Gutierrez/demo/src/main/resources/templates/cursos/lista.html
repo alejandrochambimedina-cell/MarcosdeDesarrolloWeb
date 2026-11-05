@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cursos | TechLab</title>
+</head>
+<body>
+    <h1>Portal TechLab</h1>
+
+    <nav>
+        <a href="/cursos">Cursos</a> |
+        <a href="/cursos/resumen">Resumen</a> |
+        <a href="/users">Usuarios</a> |
+        <a href="/tasks">Tareas</a>
+    </nav>
+
+    <h2>Lista de cursos</h2>
+
+    <p>
+        <a href="/cursos/nuevo">Registrar nuevo curso</a>
+    </p>
+
+    <p th:if="${mensaje}" th:text="${mensaje}"></p>
+
+    <form action="/cursos" method="get">
+        <label for="q">Buscar por título:</label>
+        <input id="q" name="q" type="text"
+               maxlength="60" th:value="${q}">
+        <button type="submit">Buscar</button>
+        <a href="/cursos">Limpiar</a>
+    </form>
+
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Horas</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="curso : ${cursos}">
+                <td th:text="${curso.id}"></td>
+                <td th:text="${curso.titulo}"></td>
+                <td th:text="${curso.horas}"></td>
+                <td th:text="${curso.categoria.nombre}"></td>
+                <td>
+                    <a th:href="@{/cursos/{id}(id=${curso.id})}">
+                        Ver
+                    </a>
+                    |
+                    <a th:href="@{/cursos/{id}/editar(id=${curso.id})}">
+                        Editar
+                    </a>
+                    |
+                    <form th:action="@{/cursos/{id}/eliminar(id=${curso.id})}"
+                          method="post" style="display:inline"
+                          onsubmit="return confirm('¿Eliminar este curso?');">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(cursos)}">
+                <td colspan="5">No se encontraron cursos.</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
