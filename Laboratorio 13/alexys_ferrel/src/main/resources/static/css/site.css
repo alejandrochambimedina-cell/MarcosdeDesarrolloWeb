@@ -1,0 +1,13 @@
+.login-panel {
+    max-width: 30rem;
+}
+.login-panel .form-control {
+    min-height: 2.75rem;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #0b5ed7;
+    outline-offset: 3px;
+}
