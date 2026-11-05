@@ -1,0 +1,180 @@
+
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.demo.dto.CourseDto;
+import com.example.demo.dto.CourseInputDto;
+import com.example.demo.entity.Category;
+import com.example.demo.entity.Course;
+import com.example.demo.exception.CourseNotFoundException;
+import com.example.demo.exception.DuplicateCourseTitleException;
+import com.example.demo.exception.InvalidCourseDataException;
+import com.example.demo.mapper.CourseMapper;
+import com.example.demo.repository.CategoryRepository;
+import com.example.demo.repository.CourseRepository;
+
+@Service
+@Transactional(readOnly = true)
+public class CourseService {
+
+    private static final int MAX_QUERY_LENGTH = 60;
+    private static final int MAX_TITLE_LENGTH = 120;
+    private static final int MIN_HOURS = 1;
+    private static final int MAX_HOURS = 500;
+
+    private final CourseRepository repository;
+    private final CourseMapper mapper;
+    private final CategoryRepository categoryRepository;
+
+    public CourseService(
+            CourseRepository repository,
+            CourseMapper mapper,
+            CategoryRepository categoryRepository) {
+        this.repository = repository;
+        this.mapper = mapper;
+        this.categoryRepository = categoryRepository;
+    }
+
+    public List<CourseDto> buscar(String texto) {
+        String criterio = Optional.ofNullable(texto).orElse("").strip();
+
+        if (criterio.length() > MAX_QUERY_LENGTH) {
+            throw new InvalidCourseDataException(
+                "La búsqueda admite hasta 60 caracteres"
+            );
+        }
+
+        List<Course> cursos = criterio.isBlank()
+            ? repository.findAllByOrderByIdAsc()
+            : repository.findByTituloContainingIgnoreCaseOrderByIdAsc(criterio);
+
+        return cursos.stream().map(mapper::toDto).toList();
+    }
+
+    public Optional<CourseDto> buscarPorId(long id) {
+        return repository.findById(id).map(mapper::toDto);
+    }
+
+    public long cantidad() {
+        return repository.count();
+    }
+
+    public int totalHoras() {
+        Long total = repository.sumarHoras();
+        return Math.toIntExact(total == null ? 0L : total);
+    }
+
+    @Transactional
+    public CourseDto crear(CourseInputDto input) {
+        CourseData data = normalizar(input);
+        Category categoria = buscarCategoria(input.getCategoriaId());
+
+        if (repository.existsByTituloIgnoreCase(data.titulo())) {
+            throw new DuplicateCourseTitleException(data.titulo());
+        }
+
+        try {
+            Course curso = Course.crear(data.titulo(), data.horas());
+            curso.asignarCategoria(categoria);
+
+            return mapper.toDto(repository.saveAndFlush(curso));
+        } catch (DataIntegrityViolationException exception) {
+            throw new DuplicateCourseTitleException(data.titulo());
+        }
+    }
+
+    @Transactional
+    public CourseDto actualizar(long id, CourseInputDto input) {
+        Course curso = repository.findById(id)
+            .orElseThrow(() -> new CourseNotFoundException(id));
+
+        CourseData data = normalizar(input);
+        Category categoria = buscarCategoria(input.getCategoriaId());
+
+        if (repository.existsByTituloIgnoreCaseAndIdNot(data.titulo(), id)) {
+            throw new DuplicateCourseTitleException(data.titulo());
+        }
+
+        curso.actualizar(data.titulo(), data.horas());
+        curso.asignarCategoria(categoria);
+
+        try {
+            repository.flush();
+            return mapper.toDto(curso);
+        } catch (DataIntegrityViolationException exception) {
+            throw new DuplicateCourseTitleException(data.titulo());
+        }
+    }
+
+    @Transactional
+    public void eliminar(long id) {
+        Course curso = repository.findById(id)
+            .orElseThrow(() -> new CourseNotFoundException(id));
+
+        repository.delete(curso);
+        repository.flush();
+    }
+
+    private Category buscarCategoria(Long categoriaId) {
+        if (categoriaId == null) {
+            throw new InvalidCourseDataException(
+                "La categoría es obligatoria"
+            );
+        }
+
+        return categoryRepository.findById(categoriaId)
+            .orElseThrow(() -> new InvalidCourseDataException(
+                "La categoría seleccionada no existe"
+            ));
+    }
+
+    private CourseData normalizar(CourseInputDto input) {
+        if (input == null) {
+            throw new InvalidCourseDataException(
+                "Debe enviar los datos del curso"
+            );
+        }
+
+        String titulo = Optional.ofNullable(input.getTitulo())
+            .orElse("")
+            .strip()
+            .replaceAll("\\s+", " ");
+
+        if (titulo.isBlank()) {
+            throw new InvalidCourseDataException(
+                "El título es obligatorio"
+            );
+        }
+
+        if (titulo.length() > MAX_TITLE_LENGTH) {
+            throw new InvalidCourseDataException(
+                "El título admite hasta 120 caracteres"
+            );
+        }
+
+        Integer horas = input.getHoras();
+
+        if (horas == null) {
+            throw new InvalidCourseDataException(
+                "La cantidad de horas es obligatoria"
+            );
+        }
+
+        if (horas < MIN_HOURS || horas > MAX_HOURS) {
+            throw new InvalidCourseDataException(
+                "Las horas deben estar entre 1 y 500"
+            );
+        }
+
+        return new CourseData(titulo, horas);
+    }
+
+    private record CourseData(String titulo, int horas) {
+    }
+}
