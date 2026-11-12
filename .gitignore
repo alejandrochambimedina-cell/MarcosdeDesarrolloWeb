@@ -13,3 +13,8 @@ Proyecto final de buses/demo/error-arranque.txt
 # Archivos propios del sistema
 .DS_Store
 Thumbs.db
+
+# Laboratorios Spring Boot: secretos y archivos generados
+**/.env
+**/target/
+**/*.log
