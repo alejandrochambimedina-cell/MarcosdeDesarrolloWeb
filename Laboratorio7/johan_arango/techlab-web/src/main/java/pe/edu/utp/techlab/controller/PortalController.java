@@ -1,4 +1,4 @@
-package johan_arango.techlab_web.controller;
+package pe.edu.utp.techlab.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

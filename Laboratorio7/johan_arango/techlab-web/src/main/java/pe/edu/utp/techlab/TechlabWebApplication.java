@@ -1,4 +1,4 @@
-package johan_arango.techlab_web;
+package pe.edu.utp.techlab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

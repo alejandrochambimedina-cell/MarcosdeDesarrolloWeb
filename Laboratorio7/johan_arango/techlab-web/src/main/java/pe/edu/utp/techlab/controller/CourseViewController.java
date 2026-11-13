@@ -1,4 +1,4 @@
-package johan_arango.techlab_web.controller;
+package pe.edu.utp.techlab.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
-import johan_arango.techlab_web.dto.CourseDto;
-import johan_arango.techlab_web.service.CourseService;
+import pe.edu.utp.techlab.dto.CourseDto;
+import pe.edu.utp.techlab.service.CourseService;
 
 @Controller
 @RequestMapping("/cursos")
@@ -31,28 +31,18 @@ public class CourseViewController {
 
         String consulta = normalizar(q);
 
-        model.addAttribute(
-                "cursos",
-                service.buscar(consulta)
-        );
-
+        model.addAttribute("cursos", service.buscar(consulta));
         model.addAttribute("q", consulta);
 
         return "cursos/lista";
     }
 
     @GetMapping("/{id}")
-    public String detalle(
-            @PathVariable long id,
-            Model model) {
+    public String detalle(@PathVariable long id, Model model) {
 
         CourseDto curso = service.buscarPorId(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,
-                                "Curso no encontrado"
-                        )
-                );
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Curso no encontrado"));
 
         model.addAttribute("curso", curso);
 
@@ -60,15 +50,12 @@ public class CourseViewController {
     }
 
     private String normalizar(String q) {
-
         String consulta = q.strip();
 
         if (consulta.length() > MAX_QUERY_LENGTH) {
-
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "La búsqueda admite hasta 60 caracteres"
-            );
+                    "La búsqueda admite hasta 60 caracteres");
         }
 
         return consulta;

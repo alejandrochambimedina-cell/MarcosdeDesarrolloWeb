@@ -1,62 +1,52 @@
 <!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head(#{curso.detalle.titulo})}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detalle del curso</title>
+  </head>
 
-<html lang="es"
-      xmlns:th="http://www.thymeleaf.org">
+  <body class="d-flex flex-column min-vh-100">
+    <a
+      class="visually-hidden-focusable position-absolute p-2 bg-white"
+      href="#contenido"
+      >Saltar al contenido</a
+    >
 
-<head th:replace="~{fragments/layout :: head(#{curso.detalle.titulo})}">
-</head>
+    <header th:replace="~{fragments/layout :: cabecera}">
+      <nav><a href="/cursos">TechLab Web</a></nav>
+    </header>
 
-<body class="d-flex flex-column min-vh-100">
-
-<header th:replace="~{fragments/layout :: cabecera}">
-</header>
-
-<main class="container py-5">
-
-    <section th:object="${curso}">
-
-        <p th:text="#{curso.detalle.titulo}">
-            Detalle del curso
+    <main id="contenido" class="container py-5">
+      <section class="mx-auto detail-panel" th:object="${curso}">
+        <p class="text-primary fw-semibold" th:text="#{curso.detalle.titulo}">
+          Detalle del curso
         </p>
 
-        <h1 th:text="*{titulo}">
-            Bootstrap
-        </h1>
+        <h1 class="display-6 fw-bold" th:text="*{titulo}">Bootstrap</h1>
 
-        <p>
-            Código:
-            <span th:text="*{id}">
-                2
-            </span>
-        </p>
+        <dl class="row mt-4">
+          <dt class="col-sm-4">Código</dt>
+          <dd class="col-sm-8" th:text="*{id}">2</dd>
 
-        <p>
+          <dt class="col-sm-4" th:text="#{curso.horas}">Horas</dt>
 
-            <span th:text="#{curso.horas}">
-                Horas
-            </span>
+          <dd class="col-sm-8" th:text="*{horas} + ' horas'">16 horas</dd>
+        </dl>
 
-            :
-
-            <span th:text="*{horas} + ' horas'">
-                16 horas
-            </span>
-
-        </p>
-
-        <a class="btn btn-primary"
-           th:href="@{/cursos}"
-           th:text="#{accion.volver}">
-            Volver al catálogo
+        <a
+          class="btn btn-primary mt-3"
+          href="lista.html"
+          th:href="@{/cursos}"
+          th:text="#{accion.volver}"
+        >
+          Volver al catálogo
         </a>
+      </section>
+    </main>
 
-    </section>
-
-</main>
-
-<footer th:replace="~{fragments/layout :: pie}">
-</footer>
-
-</body>
-
+    <footer th:replace="~{fragments/layout :: pie}">
+      <p>TechLab Web · 2026</p>
+    </footer>
+  </body>
 </html>
