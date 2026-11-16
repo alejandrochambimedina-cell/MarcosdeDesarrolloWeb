@@ -35,18 +35,20 @@ public class Usuario implements Serializable {
     @Column(nullable = false, length = 64)
     private String claveHash;
 
-    // Constructor requerido por JPA
+    @Column(nullable = false, length = 20)
+    private String rol = "USER";
+
     public Usuario() {
     }
 
-    // Conservamos el constructor utilizado por UsuarioService
     public Usuario(String nombres, String apellidos, String correo,
-                   String sal, String claveHash) {
+            String sal, String claveHash) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.correo = correo;
         this.sal = sal;
         this.claveHash = claveHash;
+        this.rol = "USER";
     }
 
     public Long getId() {
@@ -71,5 +73,17 @@ public class Usuario implements Serializable {
 
     public String getClaveHash() {
         return claveHash;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void actualizarClaveHash(String nuevoHash) {
+        this.claveHash = nuevoHash;
+    }
+
+    public void actualizarRol(String nuevoRol) {
+        this.rol = nuevoRol;
     }
 }

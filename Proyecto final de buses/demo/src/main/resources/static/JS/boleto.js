@@ -236,10 +236,14 @@ function prepararFormulario() {
         if (botonConfirmar) botonConfirmar.disabled = true;
 
         try {
+            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+            const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
+
             const respuesta = await fetch("/api/reservas", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    [csrfHeader]: csrfToken
                 },
                 credentials: "same-origin",
                 body: JSON.stringify({

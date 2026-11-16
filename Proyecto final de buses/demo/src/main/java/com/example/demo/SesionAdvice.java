@@ -1,24 +1,33 @@
+
 package com.example.demo;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-/**
- * Pone el usuario logueado (si lo hay) disponible en TODAS las plantillas
- * como ${usuarioActual}. Así el menú puede cambiar según haya sesión o no.
- */
 @ControllerAdvice
 public class SesionAdvice {
 
     @ModelAttribute("usuarioActual")
-    public Usuario usuarioActual(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session == null) {
+    public Usuario usuarioActual() {
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null
+                || !authentication.isAuthenticated()
+                || authentication instanceof AnonymousAuthenticationToken) {
             return null;
         }
-        return (Usuario) session.getAttribute(AuthController.SESION_USUARIO);
+
+        Object principal = authentication.getPrincipal();
+
+        if (principal instanceof UsuarioPrincipal usuarioPrincipal) {
+            return usuarioPrincipal.getUsuario();
+        }
+
+        return null;
     }
 }

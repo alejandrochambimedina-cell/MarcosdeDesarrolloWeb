@@ -1,10 +1,10 @@
 
 package com.example.demo;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.core.Authentication;
 
 @Controller
 public class MisReservasController {
@@ -16,14 +16,12 @@ public class MisReservasController {
     }
 
     @GetMapping("/mis-reservas")
-    public String misReservas(HttpSession session, Model model) {
+    public String misReservas(Authentication authentication, Model model) {
 
-        Usuario usuario = (Usuario) session.getAttribute(
-                AuthController.SESION_USUARIO);
+        UsuarioPrincipal principal =
+                (UsuarioPrincipal) authentication.getPrincipal();
 
-        if (usuario == null) {
-            return "redirect:/login?requerido";
-        }
+        Usuario usuario = principal.getUsuario();
 
         model.addAttribute(
                 "reservas",

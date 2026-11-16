@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Datos locales y archivos sensibles ###
+data/
+*.mv.db
+*.trace.db
+*.lock.db
+*.log
+cookies*.txt
+sesion*.txt
+error-prueba.txt
