@@ -1,0 +1,11 @@
+CREATE TABLE categories (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80) NOT NULL UNIQUE
+);
+CREATE TABLE courses (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  price DECIMAL(8,2) NOT NULL CHECK (price >= 0),
+  category_id BIGINT NOT NULL,
+  CONSTRAINT fk_course_category FOREIGN KEY (category_id) REFERENCES categories(id)
+);

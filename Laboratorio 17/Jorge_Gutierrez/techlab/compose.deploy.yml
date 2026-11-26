@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    environment:
+      DB_URL: jdbc:mysql://db:3306/techlab
+      DB_USER: techlab
+      DB_PASSWORD: ${DB_PASSWORD:?configure DB_PASSWORD}
+      TECHLAB_USER_PASSWORD: ${TECHLAB_USER_PASSWORD:?configure user password}
+      TECHLAB_ADMIN_PASSWORD: ${TECHLAB_ADMIN_PASSWORD:?configure admin password}
+      TECHLAB_JWT_SECRET: ${TECHLAB_JWT_SECRET:?configure JWT secret}
+      BIND_ADDRESS: 0.0.0.0
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped

@@ -1,0 +1,6 @@
+:root { color-scheme: light; }
+body { background: #f4f7fb; color: #182b43; }
+main { max-width: 960px !important; margin: auto; }
+:focus-visible { outline: 3px solid #1559b0; outline-offset: 3px; }
+[hidden] { display: none !important; }
+@media (max-width: 576px) { h1 { font-size: 1.65rem; } }
